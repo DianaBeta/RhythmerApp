@@ -33,6 +33,10 @@
     <string name="backHome">Back_home</string>
     <string name="next">Next</string>
     <string name="back_home">Back home</string>
+    <string name="home">TODO</string>
+    <string name="help">TODO</string>
+    <string name="play">TODO</string>
+    <string name="homesmall">TODO</string>
 
 
 </resources>
