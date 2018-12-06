@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Rhythmer</string>
+    <string name="e_mail">E-mail</string>
+    <string name="sign_in">Sign in</string>
+    <string name="password">Password</string>
+    <string name="or">or</string>
+    <string name="Login">Login</string>
+    <string name="rhythmer">RhythMer</string>
+    <string name="log_in">Log In</string>
+    <string name="email_or_username">Nickname or username</string>
+    <string name="remember_me">Remember me</string>
+    <string name="sign_up">Sign up</string>
+    <string name="todo1">TODO</string>
+    <string name="welcome">Welcome,\nget ready to train your rhythm skills!\nHave fun!</string>
+    <string name="please_select_your_mode">Please select your mode:</string>
+    <string name="beginner">Beginner</string>
+    <string name="advanced">Advanced</string>
+    <string name="expert">Expert</string>
+    <string name="todo2">TODO</string>
+    <string name="todo3">TODO</string>
+    <string name="todo4">TODO</string>
+    <string name="title_activity_how_to">howTo</string>
+    <string name="listen_to_the_music">Listen to the music</string>
+    <string name="next1">Next</string>
+    <string name="welcome_to_rhythmer">Welcome to Rhythmer!</string>
+    <string name="welcome_to_rhythmer1">Welcome to Rhythmer</string>
+    <string name="listen_to_the_music1">Listen to the music…</string>
+    <string name="todo">TODO</string>
+    <string name="ear">ear</string>
+    <string name="tap_in_the_green_button_along_with_the_music">Tap_the_green\nbutton along with the beat…</string>
+    <string name="tap_the_green_nbutton_along_with_the_beat">Tap the green button along with the beat…</string>
+    <string name="next2">Next</string>
+    <string name="backHome">Back_home</string>
+    <string name="next">Next</string>
+    <string name="back_home">Back home</string>
+
+
+</resources>
+
