@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".beginnerActivity">
+    tools:context=".beginnerActivity"
+    android:background="#FFFFE5"
+    >
 
     <ImageButton
         android:id="@+id/imageButton3"
@@ -20,10 +22,10 @@
         android:onClick="howToPlay"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.972"
+        app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.036"
+        app:layout_constraintVertical_bias="0.018"
         app:srcCompat="@android:drawable/ic_menu_help" />
 
     <ImageButton
@@ -41,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.021"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/ic_media_play" />
 
     <ImageButton
@@ -54,14 +56,28 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
+        android:contentDescription="@string/homesmall"
         android:onClick="home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintHorizontal_bias="0.067"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.021"
-        app:srcCompat="@drawable/homesmall"
-        android:contentDescription="@string/homesmall" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/homesmall" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="423dp"
+        android:layout_height="530dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/playing"
+        android:contentDescription="@string/backgroundbeginner" />
 
 </android.support.constraint.ConstraintLayout>

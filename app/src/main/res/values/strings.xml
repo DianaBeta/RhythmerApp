@@ -44,6 +44,7 @@
     <string name="BackToGame">TODO</string>
     <string name="next6">next</string>
     <string name="next">next</string>
+    <string name="backgroundbeginner">backgroundBeginner</string>
 
 
 </resources>
