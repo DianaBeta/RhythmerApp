@@ -16,7 +16,7 @@ public static final String EXTRA_MESSAGE= "com.example.TestRhythmer.MESSAGE";
     }
     /** Called when the user taps the logIn button and sends him to logIn activity which is the activity where they choose their mode(beginner,advanced etc) */
     public void logIn(View view) {
-        // Do something in response to button
+        // Do something in response to button the sends the user to logIn activity which is the activity where they choose their mode(beginner,advanced etc
         Intent intent = new Intent(this,loginActivity.class);
         startActivity(intent);
     }

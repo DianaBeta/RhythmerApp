@@ -16,19 +16,19 @@ MediaPlayer beginnerSong;
     }
 
     public void backtoBeginner(View view) {
-        // Do something in response to button
+        // Do something in response to button goes to beginner activity
         Intent intent = new Intent(this, beginnerActivity.class);
         startActivity(intent);
     }
 
     public void home(View view) {
-        // Do something in response to button
+        // Do something in response to button-goes to home which is login activity
         Intent intent = new Intent(this, loginActivity.class);
         startActivity(intent);
     }
 
     public void howToPlay(View view) {
-        // Do something in response to button
+        // Do something in response to button-goes to the other screen of how to play HowToPlay2
         Intent intent = new Intent(this, HowToPlay2.class);
         startActivity(intent);
     }

@@ -14,7 +14,7 @@ public class fingerScreen extends AppCompatActivity {
     }
 
     public void backtoBeginner(View view) {
-        // Do something in response to button
+        // Do something in response to button-goes back to beginner activity
         Intent intent = new Intent(this,beginnerActivity.class);
         startActivity(intent);
     }
