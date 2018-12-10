@@ -48,6 +48,9 @@ public class beginnerActivity extends AppCompatActivity {
         imgButton.setImageResource(android.R.drawable.ic_media_pause);
         //deactivate the button after first play - for later
 
+        //try to dynamically put dots on the purple line
+        //TO DO -> here we need to use the timeline and start putting notes on it
+
         //What should happen when the song is over? -> all comes here
         beginnerSong.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
