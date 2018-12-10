@@ -53,13 +53,15 @@ public class beginnerActivity extends AppCompatActivity {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
 
+                //adding the green user_input button after song finishes
+                Button userButton = findViewById(R.id.user_button);
+                userButton.setVisibility(View.VISIBLE);
+
                 //changing the play button to replay after song finishes
                 ImageButton imgButton = findViewById(R.id.imageButton);
                 imgButton.setImageResource(R.drawable.replay);
 
-                //adding the green user_input button after song finishes
-                Button userButton = findViewById(R.id.user_button);
-                userButton.setVisibility(View.VISIBLE);
+
             }
         });
 

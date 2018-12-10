@@ -77,7 +77,6 @@
         app:srcCompat="@drawable/homesmall" />
 
     <Button
-        android:visibility="invisible"
         android:id="@+id/user_button"
         android:layout_width="86dp"
         android:layout_height="86dp"
@@ -89,6 +88,7 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/button_bg_round"
         android:text=""
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
