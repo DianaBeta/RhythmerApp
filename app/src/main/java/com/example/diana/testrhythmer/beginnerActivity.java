@@ -50,6 +50,10 @@ public class beginnerActivity extends AppCompatActivity {
 
         //try to dynamically put dots on the purple line
         //TO DO -> here we need to use the timeline and start putting notes on it
+        // start a timer, mark the ,0.8th second, and 1.6 - 2 - 2.4
+        //https://www.journaldev.com/1050/java-timer-timertask-example
+        //https://www.compilejava.net/
+
 
         //What should happen when the song is over? -> all comes here
         beginnerSong.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
