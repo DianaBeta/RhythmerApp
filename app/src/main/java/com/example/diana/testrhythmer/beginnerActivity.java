@@ -4,12 +4,19 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import java.util.ArrayList;
+
 public class beginnerActivity extends AppCompatActivity {
     MediaPlayer beginnerSong;
+
+    ArrayList<Long> reference_beat = new ArrayList<>();
+    ArrayList<Long> user_beat;
+
 
 
     @Override
@@ -59,10 +66,28 @@ public class beginnerActivity extends AppCompatActivity {
         beginnerSong.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
+                // initialize the user beat list
+                user_beat = new ArrayList<Long>();
 
                 //adding the green user_input button after song finishes
                 Button userButton = findViewById(R.id.user_button);
                 userButton.setVisibility(View.VISIBLE);
+                userButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // update user beat list
+                        if (user_beat.size() == 0) {
+                            user_beat.add((long) 0);
+                        } else {
+                            long click_time = System.currentTimeMillis();
+                            user_beat.add(click_time - user_beat.get(0));   // TimeDistance to first click
+                        }
+
+                        // draw new points
+
+
+                    }
+                });
 
                 //changing the play button to replay after song finishes
                 ImageButton imgButton = findViewById(R.id.imageButton);
