@@ -67,7 +67,7 @@ public class beginnerActivity extends AppCompatActivity {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
                 // initialize the user beat list
-                user_beat = new ArrayList<Long>();
+                // user_beat = new ArrayList<Long>();
 
                 //adding the green user_input button after song finishes
                 Button userButton = findViewById(R.id.user_button);
@@ -81,6 +81,7 @@ public class beginnerActivity extends AppCompatActivity {
                         } else {
                             long click_time = System.currentTimeMillis();
                             user_beat.add(click_time - user_beat.get(0));   // TimeDistance to first click
+                            Log.d("TAg", (click_time + ""));
                         }
 
                         // draw new points
