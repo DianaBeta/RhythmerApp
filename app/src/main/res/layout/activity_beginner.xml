@@ -72,7 +72,7 @@
         app:srcCompat="@drawable/homesmall" />
 
     <Button
-        android:id="@+id/green_button"
+        android:id="@+id/user_button"
         android:layout_width="86dp"
         android:layout_height="86dp"
         android:layout_marginStart="8dp"
@@ -179,7 +179,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/startGame"
+        android:text="@string/start_game"
+        android:onClick="playAndMatch"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

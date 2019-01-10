@@ -45,6 +45,8 @@
     <string name="next6">next</string>
     <string name="next">next</string>
     <string name="backgroundbeginner">backgroundBeginner</string>
+    <string name="start_game">start game</string>
+    <string name="RESTART">RESTART</string>
 
 
 </resources>
