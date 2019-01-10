@@ -32,7 +32,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.032"
-        app:srcCompat="@android:drawable/ic_media_play" />
+        app:srcCompat="@android:drawable/ic_media_play"
+        tools:ignore="OnClick" />
 
     <ImageButton
         android:id="@+id/imageButton3"
@@ -71,7 +72,7 @@
         app:srcCompat="@drawable/homesmall" />
 
     <Button
-        android:id="@+id/user_button"
+        android:id="@+id/green_button"
         android:layout_width="86dp"
         android:layout_height="86dp"
         android:layout_marginStart="8dp"
@@ -169,6 +170,20 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
 
+    <Button
+        android:id="@+id/startGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/startGame"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
