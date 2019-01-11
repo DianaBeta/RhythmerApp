@@ -15,7 +15,10 @@ public class beginnerActivity extends AppCompatActivity {
     MediaPlayer beginnerSong;
 
     ArrayList<Long> reference_beat = new ArrayList<>();
+
     ArrayList<Long> user_beat;
+    ArrayList<Long> real_beat;
+
 
 
     @Override
@@ -23,6 +26,8 @@ public class beginnerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beginner);
         beginnerSong = MediaPlayer.create(beginnerActivity.this, R.raw.beginner_new);
+
+
     }
 
     public void backtoBeginner(View view) {
@@ -47,6 +52,21 @@ public class beginnerActivity extends AppCompatActivity {
         // play the song
         beginnerSong.start();
 
+     /*   real_beat.add((long)910);
+        real_beat.add((long)1700);
+        real_beat.add((long)2510);
+        real_beat.add((long)3400);
+        real_beat.add((long)4180);
+        real_beat.add((long)4990);
+        real_beat.add((long)5410);
+        real_beat.add((long)5800);
+        System.out.println(real_beat+ ""); */
+
+        //matching the reference with the real beat
+
+
+
+
         //reaching the active imageButton (play)
         ImageButton imgButton = findViewById(R.id.imageButton);
 
@@ -60,6 +80,8 @@ public class beginnerActivity extends AppCompatActivity {
 
                 //adding the start game button after song finishes for the first time
 
+
+
                 Button start_button = findViewById(R.id.startGame);
                 start_button.setVisibility(View.VISIBLE);
 
@@ -67,6 +89,7 @@ public class beginnerActivity extends AppCompatActivity {
                 ImageButton imgButton = findViewById(R.id.imageButton);
                 imgButton.setImageResource(R.drawable.replay);
 
+                //real_beat.clear();
             }
         });
 
@@ -78,10 +101,32 @@ public class beginnerActivity extends AppCompatActivity {
         Button start_button = findViewById(R.id.startGame);
         start_button.setVisibility(View.GONE);
 
+        long start_time = System.currentTimeMillis();
+         System.out.println(start_time + "start time");
+
 
         //adding the green user_input button after song finishes
         Button userButton = findViewById(R.id.user_button);
         userButton.setVisibility(View.VISIBLE);
+
+        userButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            System.out.println("green button");
+                long click_time = System.currentTimeMillis();
+                //user_beat.add(click_time - user_beat.get(0));   // TimeDistance to first click
+                Log.d("TAg", (click_time + ""));
+                System.out.println(click_time+"this is the click time");
+
+
+
+
+
+
+            }
+
+   });
+
 
 
         // play the song
@@ -94,24 +139,27 @@ public class beginnerActivity extends AppCompatActivity {
         //changing the play button to pause while playing
         imgButton.setImageResource(android.R.drawable.ic_media_play);
 
-        //we moved this piece of code up because the click events on the user button are not happenning on song completion (but during the song)
-        userButton.setOnClickListener(new View.OnClickListener() {
+        //we moved this piece of code up because the click events on the user button are not happenning on song completion (but during the song) (Isil)
+        // I commented this method because it was causing the app to crash
+       /* userButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void user_button_Onclick(View v) {
                 // update user beat list
+                long click_time = System.currentTimeMillis();
+                user_beat.add(click_time);
                 if (user_beat.size() == 0) {
                     user_beat.add((long) 0);
                 } else {
-                    long click_time = System.currentTimeMillis();
+                    //long click_time = System.currentTimeMillis();
                     user_beat.add(click_time - user_beat.get(0));   // TimeDistance to first click
                     Log.d("TAg", (click_time + ""));
                 }
-
                 // draw new points
 
 
             }
         });
+        */
 
 
         //deactivate the button after first play - for later
@@ -121,6 +169,7 @@ public class beginnerActivity extends AppCompatActivity {
         // start a timer, mark the ,0.8th second, and 1.6 - 2 - 2.4
         //https://www.journaldev.com/1050/java-timer-timertask-example
         //https://www.compilejava.net/
+
 
 
         //What should happen when the song is over? -> all comes here
@@ -137,7 +186,26 @@ public class beginnerActivity extends AppCompatActivity {
                 start_button.setText(getString(R.string.RESTART));
                 start_button.setVisibility(View.VISIBLE);
 
+   /*           userButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+               public void onClick(View v) {
+                    // update user beat list
+                    //long click_time = System.currentTimeMillis();
+                  //user_beat.add(click_time);
+                    if (user_beat.size() == 0) {
+                        user_beat.add((long) 0);
+                    } else {
+                        long click_time = System.currentTimeMillis();
+                        user_beat.add(click_time - user_beat.get(0));   // TimeDistance to first click
+                        Log.d("TAg", (click_time + ""));
+                        System.out.println(click_time);
+                    }
+            // draw new points
 
+
+        }
+    });
+              */
                 //changing the play button to replay after song finishes
                 ImageButton imgButton = findViewById(R.id.imageButton);
                 imgButton.setImageResource(R.drawable.replay);
@@ -147,6 +215,7 @@ public class beginnerActivity extends AppCompatActivity {
         });
 
     }
+
 
     protected void onPause() {
         // pause the song
