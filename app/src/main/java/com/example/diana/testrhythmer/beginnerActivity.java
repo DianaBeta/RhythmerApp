@@ -14,10 +14,9 @@ import java.util.ArrayList;
 public class beginnerActivity extends AppCompatActivity {
     MediaPlayer beginnerSong;
 
-    ArrayList<Long> reference_beat = new ArrayList<>();
-
-    ArrayList<Long> user_beat;
-    ArrayList<Long> real_beat;
+    ArrayList<Long> reference_beat = new ArrayList<Long>();
+    ArrayList<Long> user_beat = new ArrayList<Long>();
+    ArrayList<Long> real_beat = new ArrayList<Long>();
 
 
 
@@ -52,22 +51,7 @@ public class beginnerActivity extends AppCompatActivity {
         // play the song
         beginnerSong.start();
 
-     /*   real_beat.add((long)910);
-        real_beat.add((long)1700);
-        real_beat.add((long)2510);
-        real_beat.add((long)3400);
-        real_beat.add((long)4180);
-        real_beat.add((long)4990);
-        real_beat.add((long)5410);
-        real_beat.add((long)5800);
-        System.out.println(real_beat+ ""); */
-
-        //matching the reference with the real beat
-
-
-
-
-        //reaching the active imageButton (play)
+       //reaching the active imageButton (play)
         ImageButton imgButton = findViewById(R.id.imageButton);
 
         imgButton.setImageResource(android.R.drawable.ic_media_play);
@@ -89,7 +73,6 @@ public class beginnerActivity extends AppCompatActivity {
                 ImageButton imgButton = findViewById(R.id.imageButton);
                 imgButton.setImageResource(R.drawable.replay);
 
-                //real_beat.clear();
             }
         });
 
@@ -101,7 +84,7 @@ public class beginnerActivity extends AppCompatActivity {
         Button start_button = findViewById(R.id.startGame);
         start_button.setVisibility(View.GONE);
 
-        long start_time = System.currentTimeMillis();
+        final long start_time = System.currentTimeMillis();
          System.out.println(start_time + "start time");
 
 
@@ -112,11 +95,46 @@ public class beginnerActivity extends AppCompatActivity {
         userButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            System.out.println("green button");
-                long click_time = System.currentTimeMillis();
-                //user_beat.add(click_time - user_beat.get(0));   // TimeDistance to first click
-                Log.d("TAg", (click_time + ""));
+
+                real_beat.add((long)910);
+                real_beat.add((long)1700);
+                real_beat.add((long)2510);
+                real_beat.add((long)3400);
+                real_beat.add((long)4180);
+                real_beat.add((long)4990);
+                real_beat.add((long)5410);
+                real_beat.add((long)5800);
+
+                System.out.println(real_beat);
+
+                System.out.println("green button");
+                final long click_time = System.currentTimeMillis();
                 System.out.println(click_time+"this is the click time");
+                user_beat.add(click_time - start_time);                                              // Time Distance for compare it
+                System.out.print("This is user beat: " + user_beat);
+                /*for (int k = 0; k < user_beat.size(); k++) {
+                   for (int l = k; l < user_beat.size(); l++) {
+                        reference_beat.add(real_beat.get(k-1));
+                    }
+                }*/
+
+
+                for (int i = 0; i < user_beat.size(); i++) {
+                   // user_beat.add(i, click_time - start_time);                                              // Time Distance for compare it
+                    //System.out.print("This is user beat: " + user_beat);
+
+                    for (int j = 0; j < real_beat.size(); j++) {
+                        if(user_beat.get(i)< (real_beat.get(j)-500) && user_beat.get(i) > (real_beat.get(j)+500)) { // tolerance for accuracy
+                            System.out.println(i);
+                            System.out.println(j);
+                        } else {
+                            System.out.println("wrong");
+                        }
+                    }
+
+                }
+                user_beat.clear();
+                real_beat.clear();
 
 
 
