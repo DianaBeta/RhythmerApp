@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -12,12 +11,12 @@ import android.widget.ImageButton;
 import java.util.ArrayList;
 
 public class beginnerActivity extends AppCompatActivity {
+    private static int result;
+    private static int win_counter;
     MediaPlayer beginnerSong;
 
-    ArrayList<Long> reference_beat = new ArrayList<Long>();
-    ArrayList<Long> user_beat = new ArrayList<Long>();
-    ArrayList<Long> real_beat = new ArrayList<Long>();
-
+    ArrayList<Long> reference_beat = new ArrayList<>();
+    ArrayList<Long> user_beat = new ArrayList<>();
 
 
     @Override
@@ -51,7 +50,7 @@ public class beginnerActivity extends AppCompatActivity {
         // play the song
         beginnerSong.start();
 
-       //reaching the active imageButton (play)
+        //reaching the active imageButton (play)
         ImageButton imgButton = findViewById(R.id.imageButton);
 
         imgButton.setImageResource(android.R.drawable.ic_media_play);
@@ -63,7 +62,6 @@ public class beginnerActivity extends AppCompatActivity {
             public void onCompletion(MediaPlayer mediaPlayer) {
 
                 //adding the start game button after song finishes for the first time
-
 
 
                 Button start_button = findViewById(R.id.startGame);
@@ -78,77 +76,77 @@ public class beginnerActivity extends AppCompatActivity {
 
     }
 
+    /*
+    Compare Array Method is used to compare the beat input of the user with the reference beat
+    It returns 0,1 or 2 depending on different scenarios:
+    Scenario A: If the lists are empty or the users list is not equal to the reference beat (meaning the user
+    had either pressed the green button too many or too few times) then the score is 2(lost).
+    Scenario B: If the user has the same input length as the reference (meaning the user pressed as many times as
+    he was supposed to) AND the beat miliseconds of each item in the list are within a tolerance range
+    of the corresponding reference input item then the method returns 1(won).
+    Scenario C: If the length of the inputs are equal but the user pressed the green button at the wrong milisecond, then
+    the method returns 0(lost).
+    */
+
+    public static int compareArrays(ArrayList<Long> array1, ArrayList<Long> array2) {
+        //result : 1 -> win,  2 -> lost(user beat count wrong) 0-> lost(time mismatch)
+        result = 0; //final result
+        win_counter = 0; //counter of the correct clicked beats
+        int win_treshold = array1.size(); // after how many correct clicks does the user win?
+        int tolerance_rate_ms = 250; //increase if you want more WINs, decrease if you want game to be more strict
+
+        if (null != array2) { //if either user or ref input is empty
+            if (array1.size() != array2.size()) //if the input arrays arent same size
+                result = 2;
+            else
+                for (int i = 0; i < array2.size(); i++) {
+                    long beat_diff_ms = array2.get(i) - array1.get(i); //check the diff between the first elements of each array
+                    if (beat_diff_ms > -tolerance_rate_ms && beat_diff_ms < tolerance_rate_ms) { //check if the diff is between a desired range(tolerance_rate_ms)
+                        win_counter += 1; //if in range, then count this as a correctly pressed user beat
+                    }
+                }
+            if (win_counter == win_treshold) { //if the count of timely pressed user beat is equal to desired winning treshold
+                result = 1; //then make this round a winnner
+            } else {
+                result = 0;
+            }
+        } else {
+            result = 2;
+        }
+        return result;
+    }
+
     public void playAndMatch(View view) {
 
         //reaching the start game button to make hide it when the user starts the gane
         Button start_button = findViewById(R.id.startGame);
         start_button.setVisibility(View.GONE);
 
-        final long start_time = System.currentTimeMillis();
-         System.out.println(start_time + "start time");
+        final long start_time_ms = System.currentTimeMillis();
+        System.out.println("start time: " + start_time_ms);
+        beginnerSong.start();
 
 
         //adding the green user_input button after song finishes
         Button userButton = findViewById(R.id.user_button);
         userButton.setVisibility(View.VISIBLE);
-
+        user_beat.clear();
         userButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("green button pressed.");
 
-                real_beat.add((long)910);
-                real_beat.add((long)1700);
-                real_beat.add((long)2510);
-                real_beat.add((long)3400);
-                real_beat.add((long)4180);
-                real_beat.add((long)4990);
-                real_beat.add((long)5410);
-                real_beat.add((long)5800);
+                final long click_time_ms = System.currentTimeMillis();
 
-                System.out.println(real_beat);
+                final long user_beat_ms = click_time_ms - start_time_ms;
+                System.out.println("user beat ms being added : " + user_beat_ms);
+                user_beat.add(user_beat_ms);
 
-                System.out.println("green button");
-                final long click_time = System.currentTimeMillis();
-                System.out.println(click_time+"this is the click time");
-                user_beat.add(click_time - start_time);                                              // Time Distance for compare it
-                System.out.print("This is user beat: " + user_beat);
-                /*for (int k = 0; k < user_beat.size(); k++) {
-                   for (int l = k; l < user_beat.size(); l++) {
-                        reference_beat.add(real_beat.get(k-1));
-                    }
-                }*/
-
-
-                for (int i = 0; i < user_beat.size(); i++) {
-                   // user_beat.add(i, click_time - start_time);                                              // Time Distance for compare it
-                    //System.out.print("This is user beat: " + user_beat);
-
-                    for (int j = 0; j < real_beat.size(); j++) {
-                        if(user_beat.get(i)< (real_beat.get(j)-500) && user_beat.get(i) > (real_beat.get(j)+500)) { // tolerance for accuracy
-                            System.out.println(i);
-                            System.out.println(j);
-                        } else {
-                            System.out.println("wrong");
-                        }
-                    }
-
-                }
-                user_beat.clear();
-                real_beat.clear();
-
-
-
-
-
+                System.out.println("user beat list: " + user_beat);
 
             }
 
-   });
-
-
-
-        // play the song
-        beginnerSong.start();
+        });
 
 
         //reaching the active imageButton (play)
@@ -157,45 +155,16 @@ public class beginnerActivity extends AppCompatActivity {
         //changing the play button to pause while playing
         imgButton.setImageResource(android.R.drawable.ic_media_play);
 
-        //we moved this piece of code up because the click events on the user button are not happenning on song completion (but during the song) (Isil)
-        // I commented this method because it was causing the app to crash
-       /* userButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void user_button_Onclick(View v) {
-                // update user beat list
-                long click_time = System.currentTimeMillis();
-                user_beat.add(click_time);
-                if (user_beat.size() == 0) {
-                    user_beat.add((long) 0);
-                } else {
-                    //long click_time = System.currentTimeMillis();
-                    user_beat.add(click_time - user_beat.get(0));   // TimeDistance to first click
-                    Log.d("TAg", (click_time + ""));
-                }
-                // draw new points
 
-
-            }
-        });
-        */
-
-
-        //deactivate the button after first play - for later
-
-        //try to dynamically put dots on the purple line
-        //TO DO -> here we need to use the timeline and start putting notes on it
         // start a timer, mark the ,0.8th second, and 1.6 - 2 - 2.4
         //https://www.journaldev.com/1050/java-timer-timertask-example
         //https://www.compilejava.net/
-
 
 
         //What should happen when the song is over? -> all comes here
         beginnerSong.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
-                // initialize the user beat list
-                // user_beat = new ArrayList<Long>();
 
                 Button userButton = findViewById(R.id.user_button);
                 userButton.setVisibility(View.GONE);
@@ -204,30 +173,43 @@ public class beginnerActivity extends AppCompatActivity {
                 start_button.setText(getString(R.string.RESTART));
                 start_button.setVisibility(View.VISIBLE);
 
-   /*           userButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-               public void onClick(View v) {
-                    // update user beat list
-                    //long click_time = System.currentTimeMillis();
-                  //user_beat.add(click_time);
-                    if (user_beat.size() == 0) {
-                        user_beat.add((long) 0);
-                    } else {
-                        long click_time = System.currentTimeMillis();
-                        user_beat.add(click_time - user_beat.get(0));   // TimeDistance to first click
-                        Log.d("TAg", (click_time + ""));
-                        System.out.println(click_time);
-                    }
-            // draw new points
-
-
-        }
-    });
-              */
                 //changing the play button to replay after song finishes
                 ImageButton imgButton = findViewById(R.id.imageButton);
                 imgButton.setImageResource(R.drawable.replay);
 
+                //refresh(for the next round) and define reference beat values
+                reference_beat.clear();
+                reference_beat.add((long) 3733);
+                reference_beat.add((long) 4549);
+                reference_beat.add((long) 5285);
+                reference_beat.add((long) 5657);
+                reference_beat.add((long) 6065);
+                System.out.println("reference beat list: " + reference_beat);
+
+                //calculate and output the result
+                int game_result = compareArrays(reference_beat, user_beat);
+
+                switch (game_result) {
+                    case 2: //when result is 2
+                        System.out.println("YOU LOST :( ");
+                        System.out.println("You should press green the button exactly " + reference_beat.size() + " times.");
+                        System.out.println("You pressed " + user_beat.size() + " times.");
+                        System.out.println("TRY AGAIN NOW!");
+                        break;
+                    case 1://when result is 1
+                        System.out.println("YOU WON! :)");
+                        System.out.println(reference_beat.size() + " out of " + reference_beat.size() + " beats were there correctly!");
+                        System.out.println("NEXT LEVEL UNLOCKED. CLICK TO GO!");
+                        //suggestion for the next level will be added as a feature here later on
+
+                        break;
+                    case 0://when result is 0
+                        System.out.println("YOU LOST :( ");
+                        System.out.println("Only " + win_counter + " out of " + reference_beat.size() + " beats were right!");
+                        System.out.println("TRY AGAIN NOW!"); //this will be implemented as a feature later on
+                    default:
+                        System.out.println("-");
+                }
 
             }
         });
