@@ -1,5 +1,6 @@
 package com.example.diana.testrhythmer;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -94,25 +96,21 @@ public class beginnerActivity extends AppCompatActivity {
         win_counter = 0; //counter of the correct clicked beats
         int win_treshold = array1.size(); // after how many correct clicks does the user win?
         int tolerance_rate_ms = 250; //increase if you want more WINs, decrease if you want game to be more strict
-
-        if (null != array2) { //if either user or ref input is empty
-            if (array1.size() != array2.size()) //if the input arrays arent same size
-                result = 2;
-            else
-                for (int i = 0; i < array2.size(); i++) {
-                    long beat_diff_ms = array2.get(i) - array1.get(i); //check the diff between the first elements of each array
-                    if (beat_diff_ms > -tolerance_rate_ms && beat_diff_ms < tolerance_rate_ms) { //check if the diff is between a desired range(tolerance_rate_ms)
-                        win_counter += 1; //if in range, then count this as a correctly pressed user beat
-                    }
+        System.out.println(array1.size()+"--"+array2.size());
+        if (array1.size() != array2.size()){ //if the input arrays arent same size
+            System.out.print("in here!");
+            result = 2;}
+        else
+            for (int i = 0; i < array2.size(); i++) {
+                long beat_diff_ms = array2.get(i) - array1.get(i); //check the diff between the first elements of each array
+                if (beat_diff_ms > -tolerance_rate_ms && beat_diff_ms < tolerance_rate_ms) { //check if the diff is between a desired range(tolerance_rate_ms)
+                    win_counter += 1; //if in range, then count this as a correctly pressed user beat
                 }
-            if (win_counter == win_treshold) { //if the count of timely pressed user beat is equal to desired winning treshold
-                result = 1; //then make this round a winnner
-            } else {
-                result = 0;
             }
-        } else {
-            result = 2;
+        if (win_counter == win_treshold) { //if the count of timely pressed user beat is equal to desired winning treshold
+            result = 1; //then make this round a winnner
         }
+
         return result;
     }
 
@@ -155,6 +153,9 @@ public class beginnerActivity extends AppCompatActivity {
         //changing the play button to pause while playing
         imgButton.setImageResource(android.R.drawable.ic_media_play);
 
+        final TextView result_display = findViewById(R.id.result_view);
+        result_display.setVisibility(View.GONE);
+
 
         // start a timer, mark the ,0.8th second, and 1.6 - 2 - 2.4
         //https://www.journaldev.com/1050/java-timer-timertask-example
@@ -163,6 +164,7 @@ public class beginnerActivity extends AppCompatActivity {
 
         //What should happen when the song is over? -> all comes here
         beginnerSong.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
 
@@ -191,24 +193,54 @@ public class beginnerActivity extends AppCompatActivity {
 
                 switch (game_result) {
                     case 2: //when result is 2
+                        userButton.setVisibility(View.GONE);
+
+                        result_display.setVisibility(View.VISIBLE);
+                        result_display.setText("YOU LOST :( Hit count: " + user_beat.size() + ". Expected hits: " + reference_beat.size());
+
+
+                        //Button start_button = findViewById(R.id.startGame);
+                        start_button.setText(getString(R.string.RESTART));
+                        start_button.setVisibility(View.VISIBLE);
+
                         System.out.println("YOU LOST :( ");
                         System.out.println("You should press green the button exactly " + reference_beat.size() + " times.");
                         System.out.println("You pressed " + user_beat.size() + " times.");
                         System.out.println("TRY AGAIN NOW!");
                         break;
                     case 1://when result is 1
+
+                        userButton.setVisibility(View.GONE);
+                        start_button.setText("NEXT LEVEL COMING SOON");
+                        start_button.setVisibility(View.VISIBLE);
+
+
+                        result_display.setVisibility(View.VISIBLE);
+                        result_display.setText("YOU WON! :) " + user_beat.size() + "/" + reference_beat.size());
+
                         System.out.println("YOU WON! :)");
+
                         System.out.println(reference_beat.size() + " out of " + reference_beat.size() + " beats were there correctly!");
                         System.out.println("NEXT LEVEL UNLOCKED. CLICK TO GO!");
                         //suggestion for the next level will be added as a feature here later on
 
                         break;
                     case 0://when result is 0
+                        userButton.setVisibility(View.GONE);
+
+                        result_display.setVisibility(View.VISIBLE);
+                        result_display.setText("YOU LOST :( " + win_counter + "/" + reference_beat.size());
+
+
+                        //Button start_button = findViewById(R.id.startGame);
+                        start_button.setText(getString(R.string.RESTART));
+                        start_button.setVisibility(View.VISIBLE);
+
                         System.out.println("YOU LOST :( ");
                         System.out.println("Only " + win_counter + " out of " + reference_beat.size() + " beats were right!");
                         System.out.println("TRY AGAIN NOW!"); //this will be implemented as a feature later on
                     default:
-                        System.out.println("-");
+                        System.out.println(result);
                 }
 
             }
