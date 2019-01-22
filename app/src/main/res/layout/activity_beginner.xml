@@ -93,7 +93,7 @@
     <View
         android:visibility="visible"
         android:id="@+id/View03"
-        android:layout_width="380dp"
+        android:layout_width="350dp"
         android:layout_height="2dip"
         android:layout_marginStart="88dp"
         android:layout_marginLeft="8dp"
@@ -112,7 +112,7 @@
         android:id="@+id/dot_1"
         android:layout_width="8dp"
         android:layout_height="8dp"
-        android:layout_marginEnd="300dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="309dp"
         android:background="@drawable/small_dot"

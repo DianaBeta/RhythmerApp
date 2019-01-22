@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class beginnerActivity extends AppCompatActivity {
     private static int result;
@@ -26,8 +28,6 @@ public class beginnerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beginner);
         beginnerSong = MediaPlayer.create(beginnerActivity.this, R.raw.beginner_new);
-
-
     }
 
     public void backtoBeginner(View view) {
@@ -47,8 +47,56 @@ public class beginnerActivity extends AppCompatActivity {
         Intent intent = new Intent(this, HowToPlay2.class);
         startActivity(intent);
     }
+    // fill reference_beat
+    public void fillReference(){
+        reference_beat.clear();
+        reference_beat.add((long) 3733);
+        reference_beat.add((long) 4549);
+        reference_beat.add((long) 5285);
+        reference_beat.add((long) 5657);
+        reference_beat.add((long) 6065);
+    }
 
     public void play(View view) {
+        fillReference();
+        long reference_beat_end = 7000;
+
+        // add the points
+        int line_width = this.findViewById(R.id.View03).getMeasuredWidth();
+        int[] location = new int[2];
+        this.findViewById(R.id.View03).getLocationInWindow(location);
+        int bottom = this.findViewById(R.id.imageView9).getMeasuredHeight();
+        int line_start = location[0];
+        int point_y = location[1];
+
+        Log.i("BEGINNER_ACTIVITY", String.valueOf(line_width));
+        Log.i("BEGINNER_ACTIVITY", String.valueOf(line_start));
+
+        ArrayList<Button> button_list = new ArrayList<Button>();
+        button_list.add((Button)findViewById(R.id.dot_1));
+        button_list.add((Button)findViewById(R.id.dot_2));
+        button_list.add((Button)findViewById(R.id.dot_3));
+        button_list.add((Button)findViewById(R.id.dot_4));
+        button_list.add((Button)findViewById(R.id.dot_5));
+
+        for (int i = 0; i < button_list.size(); ++i)
+        {
+            if (i < reference_beat.size()) {
+                double point_x_percent = (double) (reference_beat.get(i) - reference_beat.get(0)) /
+                        (double) (reference_beat_end - reference_beat.get(0));
+                int point_x = (int) (point_x_percent * (double) line_width + (double) line_start);
+                Log.i("BEGINNER_ACTIVITY_BLA", String.valueOf(point_x));
+               //button_list.get(i).layout(point_x,point_y,line_width-point_x,bottom-point_y);// TODO: set button x position
+                //button_list.get(i).setPadding(point_x,point_y,line_width-point_x,bottom-point_y);
+                button_list.get(i).setVisibility(View.VISIBLE);               // make button visible
+            } else {
+                button_list.get(i).setVisibility(View.INVISIBLE);             // make button invisible
+            }
+        }
+
+        // force redraw
+        this.findViewById(android.R.id.content).getRootView().invalidate();
+
         // play the song
         beginnerSong.start();
 
@@ -108,7 +156,7 @@ public class beginnerActivity extends AppCompatActivity {
                 }
             }
         if (win_counter == win_treshold) { //if the count of timely pressed user beat is equal to desired winning treshold
-            result = 1; //then make this round a winnner
+            result = 1; //then make this round a winner
         }
 
         return result;
@@ -180,13 +228,10 @@ public class beginnerActivity extends AppCompatActivity {
                 imgButton.setImageResource(R.drawable.replay);
 
                 //refresh(for the next round) and define reference beat values
-                reference_beat.clear();
-                reference_beat.add((long) 3733);
-                reference_beat.add((long) 4549);
-                reference_beat.add((long) 5285);
-                reference_beat.add((long) 5657);
-                reference_beat.add((long) 6065);
+                fillReference();
                 System.out.println("reference beat list: " + reference_beat);
+
+
 
                 //calculate and output the result
                 int game_result = compareArrays(reference_beat, user_beat);
