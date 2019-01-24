@@ -2,6 +2,7 @@ package com.example.diana.testrhythmer;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.LinearLayout.LayoutParams;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +59,15 @@ public class beginnerActivity extends AppCompatActivity {
         reference_beat.add((long) 6065);
     }
 
+
     public void play(View view) {
+        // play the song
+        beginnerSong.start();
+
+        // Make Restart invisible during song is playing again
+        Button start_button = findViewById(R.id.startGame);
+        start_button.setVisibility(View.INVISIBLE);
+
         fillReference();
         long reference_beat_end = 7000;
 
@@ -65,9 +75,9 @@ public class beginnerActivity extends AppCompatActivity {
         int line_width = this.findViewById(R.id.View03).getMeasuredWidth();
         int[] location = new int[2];
         this.findViewById(R.id.View03).getLocationInWindow(location);
-        int bottom = this.findViewById(R.id.imageView9).getMeasuredHeight();
+      //  int bottom = this.findViewById(R.id.imageView9).getMeasuredHeight();
         int line_start = location[0];
-        int point_y = location[1];
+       // int point_y = location[1];
 
         Log.i("BEGINNER_ACTIVITY", String.valueOf(line_width));
         Log.i("BEGINNER_ACTIVITY", String.valueOf(line_start));
@@ -81,24 +91,23 @@ public class beginnerActivity extends AppCompatActivity {
 
         for (int i = 0; i < button_list.size(); ++i)
         {
+
             if (i < reference_beat.size()) {
                 double point_x_percent = (double) (reference_beat.get(i) - reference_beat.get(0)) /
                         (double) (reference_beat_end - reference_beat.get(0));
                 int point_x = (int) (point_x_percent * (double) line_width + (double) line_start);
                 Log.i("BEGINNER_ACTIVITY_BLA", String.valueOf(point_x));
-               //button_list.get(i).layout(point_x,point_y,line_width-point_x,bottom-point_y);// TODO: set button x position
-                //button_list.get(i).setPadding(point_x,point_y,line_width-point_x,bottom-point_y);
+                button_list.get(i).setX(point_x);                              //set button x position
                 button_list.get(i).setVisibility(View.VISIBLE);               // make button visible
             } else {
                 button_list.get(i).setVisibility(View.INVISIBLE);             // make button invisible
             }
+
         }
 
         // force redraw
-        this.findViewById(android.R.id.content).getRootView().invalidate();
+       // this.findViewById(android.R.id.content).getRootView().invalidate();
 
-        // play the song
-        beginnerSong.start();
 
         //reaching the active imageButton (play)
         ImageButton imgButton = findViewById(R.id.imageButton);
@@ -164,7 +173,7 @@ public class beginnerActivity extends AppCompatActivity {
 
     public void playAndMatch(View view) {
 
-        //reaching the start game button to make hide it when the user starts the gane
+        //reaching the start game button to make hide it when the user starts the game
         Button start_button = findViewById(R.id.startGame);
         start_button.setVisibility(View.GONE);
 
@@ -192,7 +201,45 @@ public class beginnerActivity extends AppCompatActivity {
 
             }
 
+
         });
+
+
+        long reference_beat_end = 7000;
+
+        // add the points
+        int line_width = this.findViewById(R.id.View04).getMeasuredWidth();
+        int[] location = new int[2];
+        this.findViewById(R.id.View04).getLocationInWindow(location);
+        //  int bottom = this.findViewById(R.id.imageView9).getMeasuredHeight();
+        int line_start = location[0];
+        // int point_y = location[1];
+
+        Log.i("BEGINNER_ACTIVITY", String.valueOf(line_width));
+        Log.i("BEGINNER_ACTIVITY", String.valueOf(line_start));
+
+        ArrayList<Button> ubutton_list = new ArrayList<Button>();
+        ubutton_list.add((Button)findViewById(R.id.udot_1));
+        ubutton_list.add((Button)findViewById(R.id.udot_2));
+        ubutton_list.add((Button)findViewById(R.id.udot_3));
+        ubutton_list.add((Button)findViewById(R.id.udot_4));
+        ubutton_list.add((Button)findViewById(R.id.udot_5));
+
+        for (int i = 0; i < ubutton_list.size(); ++i)
+        {
+            if (i < this.user_beat.size()) {
+                double point_x_percent = (double) (this.user_beat.get(i) - this.user_beat.get(0)) /
+                        (double) (reference_beat_end - this.user_beat.get(0));
+                int point_x = (int) (point_x_percent * (double) line_width + (double) line_start);
+                Log.i("BEGINNER_ACTIVITY_BLA", String.valueOf(point_x));
+                ubutton_list.get(i).setX(point_x);                              //set button x position
+                ubutton_list.get(i).setVisibility(View.VISIBLE);               // make button visible
+                Log.i( "user_beat", String.valueOf(this.user_beat.get(i)));
+            } else {
+                ubutton_list.get(i).setVisibility(View.INVISIBLE);             // make button invisible
+            }
+
+        }
 
 
         //reaching the active imageButton (play)
@@ -234,6 +281,7 @@ public class beginnerActivity extends AppCompatActivity {
 
 
                 //calculate and output the result
+
                 int game_result = compareArrays(reference_beat, user_beat);
 
                 switch (game_result) {

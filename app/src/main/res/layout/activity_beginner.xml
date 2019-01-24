@@ -93,7 +93,7 @@
     <View
         android:visibility="visible"
         android:id="@+id/View03"
-        android:layout_width="350dp"
+        android:layout_width="320dp"
         android:layout_height="2dip"
         android:layout_marginStart="88dp"
         android:layout_marginLeft="8dp"
@@ -104,12 +104,32 @@
         android:background="#c300ff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView9"
         app:layout_constraintVertical_bias="0.412" />
 
+    <View
+        android:id="@+id/View04"
+        android:layout_width="320dp"
+        android:layout_height="2dip"
+        android:layout_marginStart="88dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="40dp"
+        android:background="#c300ff"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView9"
+        app:layout_constraintVertical_bias="0.598" />
+
     <Button
-        android:id="@+id/dot_1"
+        android:id="@+id/dot_5"
         android:layout_width="8dp"
         android:layout_height="8dp"
         android:layout_marginEnd="30dp"
@@ -117,11 +137,12 @@
         android:layout_marginBottom="309dp"
         android:background="@drawable/small_dot"
         android:text=""
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/dot_2"
+        android:id="@+id/dot_1"
         android:layout_width="8dp"
         android:layout_height="8dp"
         android:layout_marginEnd="220dp"
@@ -129,11 +150,12 @@
         android:layout_marginBottom="309dp"
         android:background="@drawable/small_dot"
         android:text=""
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/dot_3"
+        android:id="@+id/dot_2"
         android:layout_width="8dp"
         android:layout_height="8dp"
         android:layout_marginEnd="140dp"
@@ -141,12 +163,13 @@
         android:layout_marginBottom="309dp"
         android:background="@drawable/small_dot"
         android:text=""
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
 
     <Button
-        android:id="@+id/dot_4"
+        android:id="@+id/dot_3"
         android:layout_width="8dp"
         android:layout_height="8dp"
         android:layout_marginEnd="100dp"
@@ -154,20 +177,119 @@
         android:layout_marginBottom="309dp"
         android:background="@drawable/small_dot"
         android:text=""
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/dot_5"
+    android:id="@+id/dot_4"
+    android:layout_width="8dp"
+    android:layout_height="8dp"
+    android:layout_marginEnd="60dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginBottom="309dp"
+    android:background="@drawable/small_dot"
+    android:text=""
+    android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/udot_1"
         android:layout_width="8dp"
         android:layout_height="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="60dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="309dp"
+        android:layout_marginRight="60dp"
+        android:visibility="gone"
+        android:layout_marginBottom="224dp"
         android:background="@drawable/small_dot"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+    <Button
+        android:id="@+id/udot_2"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:visibility="gone"
+        android:layout_marginBottom="224dp"
+        android:background="@drawable/small_dot"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+    <Button
+        android:id="@+id/udot_3"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:visibility="gone"
+        android:layout_marginBottom="224dp"
+        android:background="@drawable/small_dot"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+    <Button
+        android:id="@+id/udot_4"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:visibility="gone"
+        android:layout_marginBottom="224dp"
+        android:background="@drawable/small_dot"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/udot_5"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:visibility="gone"
+        android:layout_marginBottom="224dp"
+        android:background="@drawable/small_dot"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 
     <Button
