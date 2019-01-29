@@ -196,8 +196,12 @@ public class beginnerActivity extends AppCompatActivity {
                 final long user_beat_ms = click_time_ms - start_time_ms;
                 System.out.println("user beat ms being added : " + user_beat_ms);
                 user_beat.add(user_beat_ms);
+                int count = user_beat.size();
+                long user_point = user_beat.get(count-1);
 
                 System.out.println("user beat list: " + user_beat);
+
+
 
             }
 
@@ -218,26 +222,30 @@ public class beginnerActivity extends AppCompatActivity {
         Log.i("BEGINNER_ACTIVITY", String.valueOf(line_width));
         Log.i("BEGINNER_ACTIVITY", String.valueOf(line_start));
 
-        ArrayList<Button> ubutton_list = new ArrayList<Button>();
-        ubutton_list.add((Button)findViewById(R.id.udot_1));
-        ubutton_list.add((Button)findViewById(R.id.udot_2));
-        ubutton_list.add((Button)findViewById(R.id.udot_3));
-        ubutton_list.add((Button)findViewById(R.id.udot_4));
-        ubutton_list.add((Button)findViewById(R.id.udot_5));
 
-        for (int i = 0; i < ubutton_list.size(); ++i)
-        {
-            if (i < this.user_beat.size()) {
-                double point_x_percent = (double) (this.user_beat.get(i) - this.user_beat.get(0)) /
-                        (double) (reference_beat_end - this.user_beat.get(0));
-                int point_x = (int) (point_x_percent * (double) line_width + (double) line_start);
-                Log.i("BEGINNER_ACTIVITY_BLA", String.valueOf(point_x));
-                ubutton_list.get(i).setX(point_x);                              //set button x position
-                ubutton_list.get(i).setVisibility(View.VISIBLE);               // make button visible
-                Log.i( "user_beat", String.valueOf(this.user_beat.get(i)));
-            } else {
-                ubutton_list.get(i).setVisibility(View.INVISIBLE);             // make button invisible
-            }
+
+            ArrayList<Button> ubutton_list = new ArrayList<Button>();
+            ubutton_list.add((Button) findViewById(R.id.udot_1));
+            ubutton_list.add((Button) findViewById(R.id.udot_2));
+            ubutton_list.add((Button) findViewById(R.id.udot_3));
+            ubutton_list.add((Button) findViewById(R.id.udot_4));
+            ubutton_list.add((Button) findViewById(R.id.udot_5));
+
+            System.out.println("this is the user beat" + user_beat);
+
+            for (int i = 0; i < ubutton_list.size(); ++i) {
+                if (i < this.user_beat.size()) {
+                    double point_x_percent = (double) (this.user_beat.get(i) - this.user_beat.get(0)) /
+                            (double) (reference_beat_end - this.user_beat.get(0));
+                    int point_x = (int) (point_x_percent * (double) line_width + (double) line_start);
+                    Log.i("BEGINNER_ACTIVITY_BLA", String.valueOf(point_x));
+                    ubutton_list.get(i).setX(point_x);                              //set button x position
+                    ubutton_list.get(i).setVisibility(View.VISIBLE);               // make button visible
+                    Log.i("user_beat", String.valueOf(this.user_beat.get(i)));
+                } else {
+                    ubutton_list.get(i).setVisibility(View.INVISIBLE);             // make button invisible
+                }
+
 
         }
 

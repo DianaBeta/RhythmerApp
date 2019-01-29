@@ -48,6 +48,8 @@
     <string name="start_game">start game</string>
     <string name="RESTART">RESTART</string>
     <string name="result">Result</string>
+    <string name="welcomeToTheGame">Welcome</string>
+    <string name="help2">help2</string>
 
 
 </resources>
