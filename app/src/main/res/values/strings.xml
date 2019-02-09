@@ -50,6 +50,10 @@
     <string name="result">Result</string>
     <string name="welcomeToTheGame">Welcome</string>
     <string name="help2">help2</string>
+    <string name="help3">help2</string>
+    <string name="next_song">Next Song</string>
+    <string name="Congrats">Congrats you finished all Beginner Songs! Now you can try the advanced ones! GOOD LUCK!</string>
+    <string name="next_song2">Next Song</string>
 
 
 </resources>

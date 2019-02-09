@@ -20,16 +20,22 @@ public class beginnerActivity extends AppCompatActivity {
     private static int result;
     private static int win_counter;
     MediaPlayer beginnerSong;
+    MediaPlayer beginnerSong2;
+    MediaPlayer beginnerSong3;
 
-    ArrayList<Long> reference_beat = new ArrayList<>();
+    ArrayList<Long> reference_beat1 = new ArrayList<>();
     ArrayList<Long> user_beat = new ArrayList<>();
-
+    ArrayList<MediaPlayer> songs = new ArrayList<>();
+    int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beginner);
         beginnerSong = MediaPlayer.create(beginnerActivity.this, R.raw.beginner_new);
+        beginnerSong2 = MediaPlayer.create(beginnerActivity.this, R.raw.beginner2);
+        beginnerSong3 = MediaPlayer.create(beginnerActivity.this, R.raw.beginner3);
+        fillSongs();
     }
 
     public void backtoBeginner(View view) {
@@ -49,38 +55,91 @@ public class beginnerActivity extends AppCompatActivity {
         Intent intent = new Intent(this, HowToPlay2.class);
         startActivity(intent);
     }
-    // fill reference_beat
-    public void fillReference(){
-        reference_beat.clear();
-        reference_beat.add((long) 3733);
-        reference_beat.add((long) 4549);
-        reference_beat.add((long) 5285);
-        reference_beat.add((long) 5657);
-        reference_beat.add((long) 6065);
+
+    public void fillSongs(){
+        songs.add(beginnerSong);
+        songs.add(beginnerSong2);
+        songs.add(beginnerSong3);
+    }
+
+    // fill reference_beat regarding to next Song
+    public void fillReference1(){
+        reference_beat1.clear();
+        if (songs.size() == 3) {
+            reference_beat1.add((long) 3733);
+            reference_beat1.add((long) 4549);
+            reference_beat1.add((long) 5285);
+            reference_beat1.add((long) 5657);
+            reference_beat1.add((long) 6065);
+        } else if (songs.size() == 2) {
+            reference_beat1.add((long) 2100);
+            reference_beat1.add((long) 4854);
+            reference_beat1.add((long) 5285);
+            reference_beat1.add((long) 5657);
+            reference_beat1.add((long) 6065);
+        } else {
+            reference_beat1.add((long) 3733);
+            reference_beat1.add((long) 4549);
+            reference_beat1.add((long) 5285);
+            reference_beat1.add((long) 5657);
+            reference_beat1.add((long) 6065);
+        }
+    }
+
+    public void dotsInvisible(){
+        Button dot1 = findViewById(R.id.dot_1);
+        dot1.setVisibility(View.INVISIBLE);
+        Button dot2 = findViewById(R.id.dot_2);
+        dot2.setVisibility(View.INVISIBLE);
+        Button dot3 = findViewById(R.id.dot_3);
+        dot3.setVisibility(View.INVISIBLE);
+        Button dot4 = findViewById(R.id.dot_4);
+        dot4.setVisibility(View.INVISIBLE);
+        Button dot5 = findViewById(R.id.dot_5);
+        dot5.setVisibility(View.INVISIBLE);
+        Button dot6 = findViewById(R.id.dot_6);
+        dot6.setVisibility(View.INVISIBLE);
+        reference_beat1.clear();
+    }
+
+    public void udotsInvisible(){
+        Button udot1 = findViewById(R.id.udot_1);
+        udot1.setVisibility(View.INVISIBLE);
+        Button udot2 = findViewById(R.id.udot_2);
+        udot2.setVisibility(View.INVISIBLE);
+        Button udot3 = findViewById(R.id.udot_3);
+        udot3.setVisibility(View.INVISIBLE);
+        Button udot4 = findViewById(R.id.udot_4);
+        udot4.setVisibility(View.INVISIBLE);
+        Button udot5 = findViewById(R.id.udot_5);
+        udot5.setVisibility(View.INVISIBLE);
+        Button udot6 = findViewById(R.id.udot_6);
+        udot6.setVisibility(View.INVISIBLE);
+        user_beat.clear();
     }
 
 
     public void play(View view) {
-        // play the song
-        beginnerSong.start();
+        user_beat.clear();
+
+        // Play the first song of the ArrayList
+        songs.get(0).start();
 
         // Make Restart invisible during song is playing again
         Button start_button = findViewById(R.id.startGame);
         start_button.setVisibility(View.INVISIBLE);
 
-        fillReference();
+        fillReference1();
         long reference_beat_end = 7000;
 
-        // add the points
+
+      // add the points
         int line_width = this.findViewById(R.id.View03).getMeasuredWidth();
         int[] location = new int[2];
         this.findViewById(R.id.View03).getLocationInWindow(location);
-      //  int bottom = this.findViewById(R.id.imageView9).getMeasuredHeight();
         int line_start = location[0];
-       // int point_y = location[1];
 
-        Log.i("BEGINNER_ACTIVITY", String.valueOf(line_width));
-        Log.i("BEGINNER_ACTIVITY", String.valueOf(line_start));
+
 
         ArrayList<Button> button_list = new ArrayList<Button>();
         button_list.add((Button)findViewById(R.id.dot_1));
@@ -88,26 +147,23 @@ public class beginnerActivity extends AppCompatActivity {
         button_list.add((Button)findViewById(R.id.dot_3));
         button_list.add((Button)findViewById(R.id.dot_4));
         button_list.add((Button)findViewById(R.id.dot_5));
+        button_list.add((Button)findViewById(R.id.dot_6));
 
-        for (int i = 0; i < button_list.size(); ++i)
-        {
 
-            if (i < reference_beat.size()) {
-                double point_x_percent = (double) (reference_beat.get(i) - reference_beat.get(0)) /
-                        (double) (reference_beat_end - reference_beat.get(0));
+        System.out.println("Number of songs:" + songs.size());
+
+        for (int i = 0; i < button_list.size(); ++i) {
+            if (i < reference_beat1.size()) {
+                double point_x_percent = (double) (reference_beat1.get(i) - reference_beat1.get(0)) /
+                        (double) (reference_beat_end - reference_beat1.get(0));
                 int point_x = (int) (point_x_percent * (double) line_width + (double) line_start);
                 Log.i("BEGINNER_ACTIVITY_BLA", String.valueOf(point_x));
-                button_list.get(i).setX(point_x);                              //set button x position
-                button_list.get(i).setVisibility(View.VISIBLE);               // make button visible
+                button_list.get(i).setX(point_x);                               //set button x position
+                button_list.get(i).setVisibility(View.VISIBLE);                 // make button visible
             } else {
-                button_list.get(i).setVisibility(View.INVISIBLE);             // make button invisible
+                button_list.get(i).setVisibility(View.INVISIBLE);               // make button invisible
             }
-
         }
-
-        // force redraw
-       // this.findViewById(android.R.id.content).getRootView().invalidate();
-
 
         //reaching the active imageButton (play)
         ImageButton imgButton = findViewById(R.id.imageButton);
@@ -117,22 +173,19 @@ public class beginnerActivity extends AppCompatActivity {
 
         //What should happen when the song is over for the first time? -> all comes here
         beginnerSong.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
 
                 //adding the start game button after song finishes for the first time
-
-
                 Button start_button = findViewById(R.id.startGame);
                 start_button.setVisibility(View.VISIBLE);
 
                 //changing the play button to replay after song finishes
                 ImageButton imgButton = findViewById(R.id.imageButton);
                 imgButton.setImageResource(R.drawable.replay);
-
             }
         });
-
     }
 
     /*
@@ -154,24 +207,24 @@ public class beginnerActivity extends AppCompatActivity {
         int win_treshold = array1.size(); // after how many correct clicks does the user win?
         int tolerance_rate_ms = 250; //increase if you want more WINs, decrease if you want game to be more strict
         System.out.println(array1.size()+"--"+array2.size());
-        if (array1.size() != array2.size()){ //if the input arrays arent same size
+        if (array1.size() != array2.size()){ //if the input arrays aren't same size
             System.out.print("in here!");
-            result = 2;}
-        else
+            result = 2;
+        } else {
             for (int i = 0; i < array2.size(); i++) {
                 long beat_diff_ms = array2.get(i) - array1.get(i); //check the diff between the first elements of each array
                 if (beat_diff_ms > -tolerance_rate_ms && beat_diff_ms < tolerance_rate_ms) { //check if the diff is between a desired range(tolerance_rate_ms)
                     win_counter += 1; //if in range, then count this as a correctly pressed user beat
                 }
             }
+        }
         if (win_counter == win_treshold) { //if the count of timely pressed user beat is equal to desired winning treshold
             result = 1; //then make this round a winner
         }
-
         return result;
     }
 
-    public void playAndMatch(View view) {
+    public void playAndMatch(final View view) {
 
         //reaching the start game button to make hide it when the user starts the game
         Button start_button = findViewById(R.id.startGame);
@@ -179,76 +232,24 @@ public class beginnerActivity extends AppCompatActivity {
 
         final long start_time_ms = System.currentTimeMillis();
         System.out.println("start time: " + start_time_ms);
-        beginnerSong.start();
 
+        //beginnerSong.start();
+        songs.get(0).start();
 
         //adding the green user_input button after song finishes
         Button userButton = findViewById(R.id.user_button);
         userButton.setVisibility(View.VISIBLE);
-        user_beat.clear();
         userButton.setOnClickListener(new View.OnClickListener() {
-            @Override
+           @Override
             public void onClick(View v) {
                 System.out.println("green button pressed.");
-
                 final long click_time_ms = System.currentTimeMillis();
-
                 final long user_beat_ms = click_time_ms - start_time_ms;
-                System.out.println("user beat ms being added : " + user_beat_ms);
+                System.out.println("user beat ms being added: " + user_beat_ms);
                 user_beat.add(user_beat_ms);
-                int count = user_beat.size();
-                long user_point = user_beat.get(count-1);
-
-                System.out.println("user beat list: " + user_beat);
-
-
-
+                count = user_beat.size();
             }
-
-
         });
-
-
-        long reference_beat_end = 7000;
-
-        // add the points
-        int line_width = this.findViewById(R.id.View04).getMeasuredWidth();
-        int[] location = new int[2];
-        this.findViewById(R.id.View04).getLocationInWindow(location);
-        //  int bottom = this.findViewById(R.id.imageView9).getMeasuredHeight();
-        int line_start = location[0];
-        // int point_y = location[1];
-
-        Log.i("BEGINNER_ACTIVITY", String.valueOf(line_width));
-        Log.i("BEGINNER_ACTIVITY", String.valueOf(line_start));
-
-
-
-            ArrayList<Button> ubutton_list = new ArrayList<Button>();
-            ubutton_list.add((Button) findViewById(R.id.udot_1));
-            ubutton_list.add((Button) findViewById(R.id.udot_2));
-            ubutton_list.add((Button) findViewById(R.id.udot_3));
-            ubutton_list.add((Button) findViewById(R.id.udot_4));
-            ubutton_list.add((Button) findViewById(R.id.udot_5));
-
-            System.out.println("this is the user beat" + user_beat);
-
-            for (int i = 0; i < ubutton_list.size(); ++i) {
-                if (i < this.user_beat.size()) {
-                    double point_x_percent = (double) (this.user_beat.get(i) - this.user_beat.get(0)) /
-                            (double) (reference_beat_end - this.user_beat.get(0));
-                    int point_x = (int) (point_x_percent * (double) line_width + (double) line_start);
-                    Log.i("BEGINNER_ACTIVITY_BLA", String.valueOf(point_x));
-                    ubutton_list.get(i).setX(point_x);                              //set button x position
-                    ubutton_list.get(i).setVisibility(View.VISIBLE);               // make button visible
-                    Log.i("user_beat", String.valueOf(this.user_beat.get(i)));
-                } else {
-                    ubutton_list.get(i).setVisibility(View.INVISIBLE);             // make button invisible
-                }
-
-
-        }
-
 
         //reaching the active imageButton (play)
         ImageButton imgButton = findViewById(R.id.imageButton);
@@ -259,12 +260,6 @@ public class beginnerActivity extends AppCompatActivity {
         final TextView result_display = findViewById(R.id.result_view);
         result_display.setVisibility(View.GONE);
 
-
-        // start a timer, mark the ,0.8th second, and 1.6 - 2 - 2.4
-        //https://www.journaldev.com/1050/java-timer-timertask-example
-        //https://www.compilejava.net/
-
-
         //What should happen when the song is over? -> all comes here
         beginnerSong.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @SuppressLint("SetTextI18n")
@@ -272,7 +267,7 @@ public class beginnerActivity extends AppCompatActivity {
             public void onCompletion(MediaPlayer mediaPlayer) {
 
                 Button userButton = findViewById(R.id.user_button);
-                userButton.setVisibility(View.GONE);
+                userButton.setVisibility(View.INVISIBLE);
 
                 Button start_button = findViewById(R.id.startGame);
                 start_button.setText(getString(R.string.RESTART));
@@ -283,79 +278,139 @@ public class beginnerActivity extends AppCompatActivity {
                 imgButton.setImageResource(R.drawable.replay);
 
                 //refresh(for the next round) and define reference beat values
-                fillReference();
-                System.out.println("reference beat list: " + reference_beat);
-
-
+                fillReference1();
+                System.out.println("reference beat list: " + reference_beat1);
 
                 //calculate and output the result
-
-                int game_result = compareArrays(reference_beat, user_beat);
-
+                int game_result = compareArrays(reference_beat1, user_beat);
                 switch (game_result) {
                     case 2: //when result is 2
-                        userButton.setVisibility(View.GONE);
-
+                        userButton.setVisibility(View.INVISIBLE);
                         result_display.setVisibility(View.VISIBLE);
-                        result_display.setText("YOU LOST :( Hit count: " + user_beat.size() + ". Expected hits: " + reference_beat.size());
-
+                        result_display.setText("YOU LOST :( Hit count: " + user_beat.size() + ". Expected hits: " + reference_beat1.size());
 
                         //Button start_button = findViewById(R.id.startGame);
                         start_button.setText(getString(R.string.RESTART));
                         start_button.setVisibility(View.VISIBLE);
-
-                        System.out.println("YOU LOST :( ");
-                        System.out.println("You should press green the button exactly " + reference_beat.size() + " times.");
+                        // Just control output
+                        /*System.out.println("YOU LOST :( ");
+                        System.out.println("You should press green the button exactly " + reference_beat1.size() + " times.");
                         System.out.println("You pressed " + user_beat.size() + " times.");
-                        System.out.println("TRY AGAIN NOW!");
+                        System.out.println("TRY AGAIN NOW!");*/
                         break;
+
                     case 1://when result is 1
-
-                        userButton.setVisibility(View.GONE);
-                        start_button.setText("NEXT LEVEL COMING SOON");
-                        start_button.setVisibility(View.VISIBLE);
-
-
+                        userButton.setVisibility(View.INVISIBLE);
+                        //start_button.setText("NEXT LEVEL COMING SOON");
+                        //start_button.setVisibility(View.VISIBLE);
+                        start_button.setVisibility(View.INVISIBLE);
                         result_display.setVisibility(View.VISIBLE);
-                        result_display.setText("YOU WON! :) " + user_beat.size() + "/" + reference_beat.size());
+                        result_display.setText("YOU WON! :) " + user_beat.size() + "/" + reference_beat1.size());
 
-                        System.out.println("YOU WON! :)");
-
+                        // Just control output
+                        /* System.out.println("YOU WON! :)");
                         System.out.println(reference_beat.size() + " out of " + reference_beat.size() + " beats were there correctly!");
                         System.out.println("NEXT LEVEL UNLOCKED. CLICK TO GO!");
-                        //suggestion for the next level will be added as a feature here later on
+                        //suggestion for the next level will be added as a feature here later on*/
+
+                        // Make NextSong visible
+                        Button NextSong = findViewById(R.id.NextSong);
+                        NextSong.setVisibility(View.VISIBLE);
 
                         break;
+
                     case 0://when result is 0
-                        userButton.setVisibility(View.GONE);
+                        userButton.setVisibility(View.INVISIBLE);
 
                         result_display.setVisibility(View.VISIBLE);
-                        result_display.setText("YOU LOST :( " + win_counter + "/" + reference_beat.size());
-
-
+                        result_display.setText("YOU LOST :( " + win_counter + "/" + reference_beat1.size());
                         //Button start_button = findViewById(R.id.startGame);
                         start_button.setText(getString(R.string.RESTART));
                         start_button.setVisibility(View.VISIBLE);
 
-                        System.out.println("YOU LOST :( ");
+                        // Just control output
+                        /* System.out.println("YOU LOST :( ");
                         System.out.println("Only " + win_counter + " out of " + reference_beat.size() + " beats were right!");
-                        System.out.println("TRY AGAIN NOW!"); //this will be implemented as a feature later on
+                        System.out.println("TRY AGAIN NOW!"); //this will be implemented as a feature later on*/
                     default:
                         System.out.println(result);
                 }
 
+                long reference_beat_end = 7000;
+                // add the points
+                int line_width = findViewById(R.id.View04).getMeasuredWidth();
+                int[] location = new int[2];
+                findViewById(R.id.View04).getLocationInWindow(location);
+                int line_start = location[0];
+
+                ArrayList<Button> ubutton_list = new ArrayList<>();
+                ubutton_list.add((Button) findViewById(R.id.udot_1));
+                ubutton_list.add((Button) findViewById(R.id.udot_2));
+                ubutton_list.add((Button) findViewById(R.id.udot_3));
+                ubutton_list.add((Button) findViewById(R.id.udot_4));
+                ubutton_list.add((Button) findViewById(R.id.udot_5));
+                ubutton_list.add((Button) findViewById(R.id.udot_6));
+
+                for (int j = 0; j < ubutton_list.size(); ++j) {
+                    if (j < user_beat.size()) {
+                        double point_x_percent = (double) (user_beat.get(j) - user_beat.get(0)) /
+                                (double) (reference_beat_end - user_beat.get(0));
+                        int point_x = (int) (point_x_percent * (double) line_width + (double) line_start);
+                        Log.i("BEGINNER_ACTIVITY_BLA", String.valueOf(point_x));
+                        ubutton_list.get(j).setX(point_x);                              //set button x position
+                        ubutton_list.get(j).setVisibility(View.VISIBLE);               // make button visible
+                        Log.i("user_beat", String.valueOf(user_beat.get(j)));
+                        System.out.println("Anzahl user Tips" +  user_beat.size());
+                    } else {
+                        ubutton_list.get(j).setVisibility(View.INVISIBLE);             // make button invisible
+                    }
+
+                }
+                user_beat.clear();
             }
         });
+    }
+
+    public void NextSong(View view) {
+
+        // Logic following
+        if (songs.size() == 3) {
+            songs.get(0).release();
+            songs.remove(0);
+            Button NextSong = findViewById(R.id.NextSong);
+            NextSong.setVisibility(View.INVISIBLE);
+            final TextView result_display = findViewById(R.id.result_view);
+            result_display.setVisibility(View.INVISIBLE);
+        } else if (songs.size() == 2) {
+            songs.get(0).release();
+            songs.remove(0);
+            Button NextSong = findViewById(R.id.NextSong);
+            NextSong.setVisibility(View.INVISIBLE);
+            final TextView result_display = findViewById(R.id.result_view);
+            result_display.setVisibility(View.INVISIBLE);
+        } else {
+            songs.get(0).release();
+            songs.remove(0);
+            // CONGRATS
+            final TextView result_display = findViewById(R.id.result_view);
+            result_display.setVisibility(View.VISIBLE);
+            result_display.setText(getString(R.string.Congrats));
+        }
+
+        // Make all reference nodes invisible
+        dotsInvisible();
+        // Make all user nodes invisible
+        udotsInvisible();
+
+        //TODO : Replay Button to Play Button!
 
     }
 
 
     protected void onPause() {
-        // pause the song
+        // pause the song when closing app
         super.onPause();
-        beginnerSong.release();
-
+        songs.get(0).release();
     }
-
 
 }
