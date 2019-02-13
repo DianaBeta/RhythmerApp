@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class beginnerActivity extends AppCompatActivity {
+    MediaPlayer mediaPlayer=new MediaPlayer();
     private static int result;
     private static int win_counter;
     MediaPlayer beginnerSong;
@@ -124,11 +125,13 @@ public class beginnerActivity extends AppCompatActivity {
         user_beat.clear();
 
         // Play the first song of the ArrayList
+
         songs.get(0).start();
 
         // Make Restart invisible during song is playing again
         Button start_button = findViewById(R.id.startGame);
         start_button.setVisibility(View.INVISIBLE);
+
 
         fillReference1();
         long reference_beat_end = 7000;
@@ -175,17 +178,26 @@ public class beginnerActivity extends AppCompatActivity {
         //What should happen when the song is over for the first time? -> all comes here
         beginnerSong.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 
+
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
 
+
+
                 //adding the start game button after song finishes for the first time
+               // Button start_button = findViewById(R.id.startGame);
+               // start_button.setVisibility(View.VISIBLE);
+
                 Button start_button = findViewById(R.id.startGame);
+                start_button.setText(getString(R.string.START));
                 start_button.setVisibility(View.VISIBLE);
 
                 //changing the play button to replay after song finishes
                 ImageButton imgButton = findViewById(R.id.imageButton);
                 imgButton.setImageResource(R.drawable.replay);
+
             }
+
         });
     }
 
@@ -223,13 +235,15 @@ public class beginnerActivity extends AppCompatActivity {
             result = 1; //then make this round a winner
         }
         return result;
+
+
     }
 
     public void playAndMatch(final View view) {
 
         //reaching the start game button to make hide it when the user starts the game
         Button start_button = findViewById(R.id.startGame);
-        start_button.setVisibility(View.GONE);
+        start_button.setVisibility(View.INVISIBLE);
 
         final long start_time_ms = System.currentTimeMillis();
         System.out.println("start time: " + start_time_ms);
@@ -273,6 +287,7 @@ public class beginnerActivity extends AppCompatActivity {
                 Button start_button = findViewById(R.id.startGame);
                 start_button.setText(getString(R.string.RESTART));
                 start_button.setVisibility(View.VISIBLE);
+
 
                 //changing the play button to replay after song finishes
                 ImageButton imgButton = findViewById(R.id.imageButton);
@@ -376,7 +391,9 @@ public class beginnerActivity extends AppCompatActivity {
 
         // Logic following
         if (songs.size() == 3) {
-            songs.get(0).release();
+            songs.get(0).stop();
+            //songs.get(0).release();
+            //songs.get(0).reset();
             songs.remove(0);
             Button NextSong = findViewById(R.id.NextSong);
             NextSong.setVisibility(View.INVISIBLE);
@@ -404,6 +421,15 @@ public class beginnerActivity extends AppCompatActivity {
         udotsInvisible();
 
         //TODO : Replay Button to Play Button!
+        //changing the play button to replay after song finishes
+        ImageButton imgButton = findViewById(R.id.imageButton);
+        imgButton.setImageResource(R.drawable.ic_media_play);
+
+
+
+
+
+
 
     }
 
@@ -411,7 +437,8 @@ public class beginnerActivity extends AppCompatActivity {
     protected void onPause() {
         // pause the song when closing app
         super.onPause();
-        songs.get(0).release();
+        //songs.get(0).release();
+        songs.get(0).stop();
     }
 
 }

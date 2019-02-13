@@ -54,6 +54,8 @@
     <string name="next_song">Next Song</string>
     <string name="Congrats">Congrats you finished all Beginner Songs! Now you can try the advanced ones! GOOD LUCK!</string>
     <string name="next_song2">Next Song</string>
+    <string name="congrats">Congrats</string>
+    <string name="START">START</string>
 
 
 </resources>
