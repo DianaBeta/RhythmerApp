@@ -120,6 +120,7 @@ public class beginnerActivity extends AppCompatActivity {
 
 
     public void play(View view) {
+        udotsInvisible();
         user_beat.clear();
 
         // Play the first song of the ArrayList

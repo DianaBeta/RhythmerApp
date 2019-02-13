@@ -184,17 +184,17 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-    android:id="@+id/dot_4"
-    android:layout_width="8dp"
-    android:layout_height="8dp"
-    android:layout_marginEnd="60dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginBottom="309dp"
-    android:background="@drawable/small_dot"
-    android:text=""
-    android:visibility="invisible"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        android:id="@+id/dot_4"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="309dp"
+        android:background="@drawable/small_dot"
+        android:text=""
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/dot_6"
