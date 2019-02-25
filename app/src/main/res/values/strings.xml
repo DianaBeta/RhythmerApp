@@ -58,10 +58,12 @@
     <string name="START">START</string>
     <string name="next7">Next</string>
     <string name="rhythms">Then you will hear the rhythms..</string>
-    <string name="at_first_you_will_hear_a_metronome">At first you will hear a metronome..</string>
+    <string name="at_first_you_will_hear_a_metronome">At first you will hear a metronome four times..</string>
     <string name="metronome">TODO</string>
     <string name="tap">Tap the green button along with the beats.To win you need to tap the correct amount of times and at the right time! Have fun!</string>
     <string name="beats"> After the metronome you will hear some drum beats &#8230;</string>
+    <string name="first_you_will_hear_a_metronome_four_times">First you will hear a metronome four times &#8230; </string>
+    <string name="back_to_game2">Back to game</string>
 
 
 </resources>

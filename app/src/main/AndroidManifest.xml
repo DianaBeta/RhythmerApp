@@ -29,7 +29,7 @@
         <activity android:name=".how_to_play2_b" />
         <activity android:name=".finger_screen2_b" />
         <activity android:name=".loginAdvanced" />
-        <activity android:name=".logInExpert"/>
+        <activity android:name=".logInExpert" />
     </application>
 
 </manifest>

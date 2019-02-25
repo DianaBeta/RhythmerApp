@@ -27,7 +27,7 @@ public class loginActivity extends AppCompatActivity {
      */
     public void howTo(View view) {
         // Do something in response to button-go to howTo activity
-        Intent intent = new Intent(this, howTo.class);
+        Intent intent = new Intent(this, metromome.class);
         startActivity(intent);
 
     }

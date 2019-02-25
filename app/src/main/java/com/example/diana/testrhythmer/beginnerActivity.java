@@ -33,10 +33,14 @@ public class beginnerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beginner);
+        createMusic();
+        fillSongs();
+    }
+
+    public void createMusic(){
         beginnerSong = MediaPlayer.create(beginnerActivity.this, R.raw.beginner_new);
         beginnerSong2 = MediaPlayer.create(beginnerActivity.this, R.raw.beginner2);
         beginnerSong3 = MediaPlayer.create(beginnerActivity.this, R.raw.beginner3);
-        fillSongs();
     }
 
     public void backtoBeginner(View view) {
@@ -51,9 +55,9 @@ public class beginnerActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void howToPlay(View view) {
-        // Do something in response to button-goes to the other screen of how to play HowToPlay2
-        Intent intent = new Intent(this, HowToPlay2.class);
+    public void help2(View view) {
+        // Do something in response to button-goes to the other screen of how to play metromome
+        Intent intent = new Intent(this, metronome_b.class);
         startActivity(intent);
     }
 
@@ -125,7 +129,7 @@ public class beginnerActivity extends AppCompatActivity {
         user_beat.clear();
 
         // Play the first song of the ArrayList
-
+        //createMusic();
         songs.get(0).start();
 
         // Make Restart invisible during song is playing again
@@ -182,7 +186,10 @@ public class beginnerActivity extends AppCompatActivity {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
 
-
+                //songs.get(0).stop();
+                //songs.get(0).release();
+                //mediaPlayer.release();
+                //mediaPlayer=null;
 
                 //adding the start game button after song finishes for the first time
                // Button start_button = findViewById(R.id.startGame);
@@ -241,6 +248,7 @@ public class beginnerActivity extends AppCompatActivity {
 
     public void playAndMatch(final View view) {
 
+        //createMusic();
         //reaching the start game button to make hide it when the user starts the game
         Button start_button = findViewById(R.id.startGame);
         start_button.setVisibility(View.INVISIBLE);
@@ -280,6 +288,11 @@ public class beginnerActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
+
+                //songs.get(0).stop();
+                //songs.get(0).release();
+                //mediaPlayer.release();
+                //mediaPlayer=null;
 
                 Button userButton = findViewById(R.id.user_button);
                 userButton.setVisibility(View.INVISIBLE);
@@ -392,8 +405,11 @@ public class beginnerActivity extends AppCompatActivity {
         // Logic following
         if (songs.size() == 3) {
             songs.get(0).stop();
-            //songs.get(0).release();
+            songs.get(0).release();
+            mediaPlayer.release();
+           mediaPlayer=null;
             //songs.get(0).reset();
+            mediaPlayer.reset();
             songs.remove(0);
             Button NextSong = findViewById(R.id.NextSong);
             NextSong.setVisibility(View.INVISIBLE);
@@ -413,6 +429,7 @@ public class beginnerActivity extends AppCompatActivity {
             final TextView result_display = findViewById(R.id.result_view);
             result_display.setVisibility(View.VISIBLE);
             result_display.setText(getString(R.string.Congrats));
+
         }
 
         // Make all reference nodes invisible

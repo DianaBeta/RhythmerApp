@@ -34,7 +34,7 @@ private static final String KEY_NAME="key_username";
 
         if (name.isEmpty()){
             empty = true;
-            editText.setError("please fill in name");
+            editText.setError("Please fill in your name!");
             editText.requestFocus();
         }
 
@@ -52,8 +52,11 @@ private static final String KEY_NAME="key_username";
         Intent intent = new Intent(this,loginActivity.class);
        saveName();
 
+        Intent intent2 = new Intent(this,loginAdvanced.class);
+        saveName();
+
         if (empty) {
-            editText.setError("please fill in name");
+            editText.setError("Please fill in your name!");
             editText.requestFocus();
 
         } else {
