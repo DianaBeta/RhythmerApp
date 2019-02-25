@@ -20,14 +20,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".loginActivity" />
-        <activity
-            android:name=".howTo"
-            android:label="@string/title_activity_how_to"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".listen" />
+
         <activity android:name=".beginnerActivity" />
         <activity android:name=".HowToPlay2" />
-        <activity android:name=".fingerScreen"></activity>
+        <activity android:name=".fingerScreen" />
+        <activity android:name=".metromome" />
+        <activity android:name=".metronome_b" />
+        <activity android:name=".how_to_play2_b" />
+        <activity android:name=".finger_screen2_b" />
+        <activity android:name=".loginAdvanced" />
+        <activity android:name=".logInExpert"/>
     </application>
 
 </manifest>
