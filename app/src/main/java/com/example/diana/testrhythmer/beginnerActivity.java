@@ -409,7 +409,7 @@ public class beginnerActivity extends AppCompatActivity {
             mediaPlayer.release();
            mediaPlayer=null;
             //songs.get(0).reset();
-            mediaPlayer.reset();
+            //mediaPlayer.reset();
             songs.remove(0);
             Button NextSong = findViewById(R.id.NextSong);
             NextSong.setVisibility(View.INVISIBLE);

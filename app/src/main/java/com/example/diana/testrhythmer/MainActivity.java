@@ -52,8 +52,6 @@ private static final String KEY_NAME="key_username";
         Intent intent = new Intent(this,loginActivity.class);
        saveName();
 
-        Intent intent2 = new Intent(this,loginAdvanced.class);
-        saveName();
 
         if (empty) {
             editText.setError("Please fill in your name!");
