@@ -64,6 +64,11 @@
     <string name="beats"> After the metronome you will hear some drum beats &#8230;</string>
     <string name="first_you_will_hear_a_metronome_four_times">First you will hear a metronome four times &#8230; </string>
     <string name="back_to_game2">Back to game</string>
+    <string name="back_to_menu">Back to menu</string>
+    <string name="next_level">Next Level</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

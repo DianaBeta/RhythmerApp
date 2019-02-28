@@ -20,7 +20,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".loginActivity" />
-
         <activity android:name=".beginnerActivity" />
         <activity android:name=".HowToPlay2" />
         <activity android:name=".fingerScreen" />
@@ -30,6 +29,9 @@
         <activity android:name=".finger_screen2_b" />
         <activity android:name=".loginAdvanced" />
         <activity android:name=".logInExpert" />
+        <activity android:name=".AdvancedActivity">
+
+        </activity>
     </application>
 
 </manifest>

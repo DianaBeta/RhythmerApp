@@ -77,17 +77,19 @@ public class beginnerActivity extends AppCompatActivity {
             reference_beat1.add((long) 5657);
             reference_beat1.add((long) 6065);
         } else if (songs.size() == 2) {
-            reference_beat1.add((long) 2100);
-            reference_beat1.add((long) 4854);
-            reference_beat1.add((long) 5285);
-            reference_beat1.add((long) 5657);
-            reference_beat1.add((long) 6065);
+            reference_beat1.add((long) 3657);
+            reference_beat1.add((long) 4048);
+            reference_beat1.add((long) 4519);
+            reference_beat1.add((long) 5485);
+            reference_beat1.add((long) 5884);
+            reference_beat1.add((long) 6191);
         } else {
-            reference_beat1.add((long) 3733);
-            reference_beat1.add((long) 4549);
-            reference_beat1.add((long) 5285);
-            reference_beat1.add((long) 5657);
-            reference_beat1.add((long) 6065);
+            reference_beat1.add((long) 3343);
+            reference_beat1.add((long) 4153);
+            reference_beat1.add((long) 4571);
+            reference_beat1.add((long) 4937);
+            reference_beat1.add((long) 5381);
+            reference_beat1.add((long) 5746);
         }
     }
 
@@ -180,7 +182,7 @@ public class beginnerActivity extends AppCompatActivity {
         //deactivate the button after first play - for later
 
         //What should happen when the song is over for the first time? -> all comes here
-        beginnerSong.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+        songs.get(0).setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 
 
             @Override
@@ -284,7 +286,7 @@ public class beginnerActivity extends AppCompatActivity {
         result_display.setVisibility(View.GONE);
 
         //What should happen when the song is over? -> all comes here
-        beginnerSong.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+       songs.get(0).setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
@@ -426,11 +428,15 @@ public class beginnerActivity extends AppCompatActivity {
             songs.get(0).release();
             songs.remove(0);
             // CONGRATS
+            Button NextSong = findViewById(R.id.NextSong);
+            NextSong.setVisibility(View.GONE);
             final TextView result_display = findViewById(R.id.result_view);
             result_display.setVisibility(View.VISIBLE);
             result_display.setText(getString(R.string.Congrats));
-
+            nextLvl();
         }
+
+
 
         // Make all reference nodes invisible
         dotsInvisible();
@@ -450,6 +456,10 @@ public class beginnerActivity extends AppCompatActivity {
 
     }
 
+    public void nextLvl(){
+        Button NextLevel = findViewById(R.id.NextSong);
+        NextLevel.setVisibility(View.VISIBLE);
+    }
 
     protected void onPause() {
         // pause the song when closing app
