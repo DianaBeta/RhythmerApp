@@ -99,7 +99,7 @@
         android:layout_marginBottom="16dp"
         android:background="#D3D3D3"
         android:text="@string/beginner"
-
+        android:onClick="backtoBeginner"
         android:textAllCaps="false"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -121,6 +121,7 @@
         android:layout_marginBottom="16dp"
         android:background="#D3D3D3"
         android:text="@string/advanced"
+        android:onClick="toAdvanced"
         android:textAllCaps="false"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"

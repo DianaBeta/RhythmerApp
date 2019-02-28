@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Congrats"
+    tools:context=".Congrats2"
     android:background="#FFFFE5">
 
     <TextView
@@ -38,7 +38,7 @@
         android:text="@string/back_to_menu"
         android:visibility="visible"
         android:textAllCaps="false"
-        android:onClick="backHome"
+        android:onClick="backHome2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.035"
@@ -59,7 +59,7 @@
         android:text="@string/next_level"
         android:visibility="visible"
         android:textAllCaps="false"
-        android:onClick="nextLevel"
+        android:onClick="nextLevel2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.953"

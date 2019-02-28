@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdvancedActivity"
+    tools:context=".ExpertActivity"
     android:background="#FFFFE5"
     >
 
@@ -48,7 +48,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:contentDescription="@string/homesmall"
-        android:onClick="homeA"
+        android:onClick="homeE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.094"
@@ -548,7 +548,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/help2"
-        android:onClick="help2"
+        android:onClick="help3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.919"

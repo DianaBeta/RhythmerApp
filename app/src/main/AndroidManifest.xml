@@ -29,8 +29,10 @@
         <activity android:name=".finger_screen2_b" />
         <activity android:name=".loginAdvanced" />
         <activity android:name=".logInExpert" />
-        <activity android:name=".AdvancedActivity"></activity>
-        <activity android:name=".Congrats"></activity>
+        <activity android:name=".AdvancedActivity" />
+        <activity android:name=".Congrats" />
+        <activity android:name=".Congrats2" />
+        <activity android:name=".ExpertActivity"></activity>
     </application>
 
 </manifest>

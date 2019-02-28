@@ -16,13 +16,13 @@ import android.widget.LinearLayout.LayoutParams;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdvancedActivity extends AppCompatActivity {
+public class ExpertActivity extends AppCompatActivity {
     MediaPlayer mediaPlayer=new MediaPlayer();
     private static int result;
     private static int win_counter;
-    MediaPlayer advancedSong1;
-    MediaPlayer advancedSong2;
-    MediaPlayer advancedSong3;
+    MediaPlayer expertSong1;
+    MediaPlayer expertSong2;
+    MediaPlayer expertSong3;
 
     ArrayList<Long> reference_beat1 = new ArrayList<>();
     ArrayList<Long> user_beat = new ArrayList<>();
@@ -33,65 +33,68 @@ public class AdvancedActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_advanced);
+        setContentView(R.layout.activity_expert);
         createMusic();
         fillSongs();
     }
 
     public void createMusic(){
-        advancedSong1 = MediaPlayer.create(AdvancedActivity.this, R.raw.advanced1);
-        advancedSong2 = MediaPlayer.create(AdvancedActivity.this, R.raw.advanced2);
-        advancedSong3 = MediaPlayer.create(AdvancedActivity.this, R.raw.advanced3);
+        expertSong1 = MediaPlayer.create(ExpertActivity.this, R.raw.expert1);
+        expertSong2 = MediaPlayer.create(ExpertActivity.this, R.raw.expert2);
+        expertSong3 = MediaPlayer.create(ExpertActivity.this, R.raw.expert3);
     }
-//TODO make help screens
-    public void backtoAdvanced(View view) {
+    //TODO make help screens
+    public void backtoExpert(View view) {
         // Do something in response to button goes to beginner activity
-        Intent intent = new Intent(this, beginnerActivity.class);
+        Intent intent = new Intent(this, ExpertActivity.class);
         startActivity(intent);
     }
 
-    public void homeA(View view) {
+    public void homeE(View view) {
         // Do something in response to button-goes to home which is login activity
-        Intent intent = new Intent(this, loginAdvanced.class);
+        Intent intent = new Intent(this, logInExpert.class);
         startActivity(intent);
     }
 
     //TODO make help screens
     //TODO change onClick on XML
-    public void help2(View view) {
+    public void help3(View view) {
         // Do something in response to button-goes to the other screen of how to play metromome
         Intent intent = new Intent(this, metronome_b.class);
         startActivity(intent);
     }
 
     public void fillSongs(){
-        songs.add(advancedSong1);
-        songs.add(advancedSong2);
-        songs.add(advancedSong3);
+        songs.add(expertSong1);
+        songs.add(expertSong2);
+        songs.add(expertSong3);
     }
 
     // fill reference_beat regarding to next Song
     public void fillReference1(){
         reference_beat1.clear();
         if (songs.size() == 3) {
-            reference_beat1.add((long) 3422);
-            reference_beat1.add((long) 4806);
-            reference_beat1.add((long) 5224);
-            reference_beat1.add((long) 5590);
+            reference_beat1.add((long) 2664);
+            reference_beat1.add((long) 3004);
+            reference_beat1.add((long) 3709);
+            reference_beat1.add((long) 3970);
+            reference_beat1.add((long) 4597);
 
         } else if (songs.size() == 2) {
-            reference_beat1.add((long) 3160);
+            reference_beat1.add((long) 2925);
             reference_beat1.add((long) 3578);
-            reference_beat1.add((long) 3970);
-            reference_beat1.add((long) 4414);
-            reference_beat1.add((long) 4858);
-            reference_beat1.add((long) 5224);
+            reference_beat1.add((long) 4310);
+            reference_beat1.add((long) 4675);
+            reference_beat1.add((long) 5302);
+
         } else {
-            reference_beat1.add((long) 3186);
-            reference_beat1.add((long) 3578);
-            reference_beat1.add((long) 4806);
-            reference_beat1.add((long) 5276);
-            reference_beat1.add((long) 5642);
+            reference_beat1.add((long) 3030);
+            reference_beat1.add((long) 3369);
+            reference_beat1.add((long) 3996);
+            reference_beat1.add((long) 4440);
+            reference_beat1.add((long) 4702);
+            reference_beat1.add((long) 5381);
+
 
         }
     }

@@ -16,6 +16,9 @@ public class loginAdvanced extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_advanced);
+        
+        displayName();
+
     }
 
     public void howTo(View view) {
@@ -35,4 +38,18 @@ public class loginAdvanced extends AppCompatActivity {
 
         }
     }
+
+    public void backtoBeginner(View view){
+        Intent intent = new Intent(this, beginnerActivity.class);
+        startActivity(intent);
+
+    }
+
+    public void toAdvanced(View view){
+        Intent intent = new Intent(this, AdvancedActivity.class);
+        startActivity(intent);
+
+    }
+
 }
+
