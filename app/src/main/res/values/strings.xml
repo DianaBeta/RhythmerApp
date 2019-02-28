@@ -52,7 +52,7 @@
     <string name="help2">help2</string>
     <string name="help3">help2</string>
     <string name="next_song">Next Song</string>
-    <string name="Congrats">Congrats you finished all Beginner Songs! Now you can try the advanced ones! GOOD LUCK!</string>
+    <string name="Congrats">Congrats you finished all Beginner Songs!\n Now you can try the advanced ones!\n GOOD LUCK!</string>
     <string name="next_song2">Next Song</string>
     <string name="congrats">Congrats</string>
     <string name="START">START</string>
@@ -69,6 +69,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="congratulations_you_solved_all_the_beginner_level_songs_you_can_continue_with_the_next_level_or_go_back_to_menu">Congratulations, you solved all the beginner level songs,you can continue with the next level or go back to menu!</string>
 
 
 </resources>

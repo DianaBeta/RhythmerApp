@@ -404,6 +404,7 @@ public class beginnerActivity extends AppCompatActivity {
 
     public void NextSong(View view) {
 
+
         // Logic following
         if (songs.size() == 3) {
             songs.get(0).stop();
@@ -424,16 +425,14 @@ public class beginnerActivity extends AppCompatActivity {
             NextSong.setVisibility(View.INVISIBLE);
             final TextView result_display = findViewById(R.id.result_view);
             result_display.setVisibility(View.INVISIBLE);
-        } else {
+        } else if (songs.size() ==1) {
             songs.get(0).release();
             songs.remove(0);
-            // CONGRATS
             Button NextSong = findViewById(R.id.NextSong);
             NextSong.setVisibility(View.GONE);
-            final TextView result_display = findViewById(R.id.result_view);
-            result_display.setVisibility(View.VISIBLE);
-            result_display.setText(getString(R.string.Congrats));
-            nextLvl();
+            Button Next = findViewById(R.id.NextScreen);
+            Next.setVisibility(View.VISIBLE);
+            NextActivity();
         }
 
 
@@ -443,24 +442,20 @@ public class beginnerActivity extends AppCompatActivity {
         // Make all user nodes invisible
         udotsInvisible();
 
+
+
         //TODO : Replay Button to Play Button!
         //changing the play button to replay after song finishes
         ImageButton imgButton = findViewById(R.id.imageButton);
         imgButton.setImageResource(R.drawable.ic_media_play);
 
 
-
-
-
-
-
     }
 
-    public void nextLvl(){
-        Button NextLevel = findViewById(R.id.NextSong);
-        NextLevel.setVisibility(View.VISIBLE);
-    }
-
+public void NextActivity(){
+    Intent intent = new Intent(this,Congrats.class);
+    startActivity(intent);
+}
     protected void onPause() {
         // pause the song when closing app
         super.onPause();
