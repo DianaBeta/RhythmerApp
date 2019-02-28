@@ -28,6 +28,7 @@ public class beginnerActivity extends AppCompatActivity {
     ArrayList<Long> user_beat = new ArrayList<>();
     ArrayList<MediaPlayer> songs = new ArrayList<>();
     int count;
+   // int k = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -287,7 +288,7 @@ public class beginnerActivity extends AppCompatActivity {
 
         //What should happen when the song is over? -> all comes here
        songs.get(0).setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @SuppressLint("SetTextI18n")
+            @SuppressLint({"SetTextI18n", "ResourceAsColor"})
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
 
@@ -382,13 +383,35 @@ public class beginnerActivity extends AppCompatActivity {
                 ubutton_list.add((Button) findViewById(R.id.udot_5));
                 ubutton_list.add((Button) findViewById(R.id.udot_6));
 
+             /*   ArrayList<Button> ubuttonr_list = new ArrayList<>();
+                ubuttonr_list.add((Button) findViewById(R.id.udotr_1));
+                ubuttonr_list.add((Button) findViewById(R.id.udotr_2));
+                ubuttonr_list.add((Button) findViewById(R.id.udotr_3));
+                ubuttonr_list.add((Button) findViewById(R.id.udotr_4));
+                ubuttonr_list.add((Button) findViewById(R.id.udotr_5));
+                ubuttonr_list.add((Button) findViewById(R.id.udotr_6));
+                ubuttonr_list.add((Button) findViewById(R.id.udotr_7));
+                ubuttonr_list.add((Button) findViewById(R.id.udotr_8));
+                ubuttonr_list.add((Button) findViewById(R.id.udotr_9));
+                ubuttonr_list.add((Button) findViewById(R.id.udotr_10));
+                */
+
+
                 for (int j = 0; j < ubutton_list.size(); ++j) {
+
                     if (j < user_beat.size()) {
                         double point_x_percent = (double) (user_beat.get(j) - user_beat.get(0)) /
-                                (double) (reference_beat_end - user_beat.get(0));
+                                (double) (reference_beat_end -user_beat.get(0));
                         int point_x = (int) (point_x_percent * (double) line_width + (double) line_start);
                         Log.i("BEGINNER_ACTIVITY_BLA", String.valueOf(point_x));
-                        ubutton_list.get(j).setX(point_x);                              //set button x position
+                       // if(user_beat.get(j)!= reference_beat1.get(j)){
+                            //Button ubbutton_list.get(j)= findViewById(R.id.udotr_10);
+                         //   ubutton_list.get(j).setButton(R.drawable.reddot);
+                       // } else {
+                       //     ubutton_list.set(j, ubuttonr_list.get(k));
+                        //    k++;
+                        //}
+                        ubutton_list.get(j).setX(point_x);//set button x position
                         ubutton_list.get(j).setVisibility(View.VISIBLE);               // make button visible
                         Log.i("user_beat", String.valueOf(user_beat.get(j)));
                         System.out.println("Anzahl user Tips" +  user_beat.size());
@@ -398,6 +421,8 @@ public class beginnerActivity extends AppCompatActivity {
 
                 }
                 user_beat.clear();
+                ubutton_list.clear();
+ //               ubuttonr_list.clear();
             }
         });
     }
@@ -425,13 +450,11 @@ public class beginnerActivity extends AppCompatActivity {
             NextSong.setVisibility(View.INVISIBLE);
             final TextView result_display = findViewById(R.id.result_view);
             result_display.setVisibility(View.INVISIBLE);
-        } else if (songs.size() ==1) {
-            songs.get(0).release();
-            songs.remove(0);
+        } else /*if (songs.size() ==1)*/ {
+           // songs.get(0).release();
+           // songs.remove(0);
             Button NextSong = findViewById(R.id.NextSong);
             NextSong.setVisibility(View.GONE);
-            Button Next = findViewById(R.id.NextScreen);
-            Next.setVisibility(View.VISIBLE);
             NextActivity();
         }
 
