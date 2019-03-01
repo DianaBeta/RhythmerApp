@@ -21,18 +21,35 @@
         </activity>
         <activity android:name=".loginActivity" />
         <activity android:name=".beginnerActivity" />
-        <activity android:name=".HowToPlay2" />
-        <activity android:name=".fingerScreen" />
-        <activity android:name=".metromome" />
-        <activity android:name=".metronome_b" />
-        <activity android:name=".how_to_play2_b" />
-        <activity android:name=".finger_screen2_b" />
+        <activity android:name=".HowToPlayL" />
+        <activity android:name=".fingerScreenL" />
+        <activity android:name=".metromomeL" />
+        <activity android:name=".metronomeBA" />
+        <activity android:name=".HowToPlayBA" />
+        <activity android:name=".fingerScreenBA" />
         <activity android:name=".loginAdvanced" />
         <activity android:name=".logInExpert" />
         <activity android:name=".AdvancedActivity" />
         <activity android:name=".Congrats" />
         <activity android:name=".Congrats2" />
-        <activity android:name=".ExpertActivity"></activity>
+        <activity android:name=".ExpertActivity" />
+        <activity android:name=".loginDone" />
+        <activity android:name=".metronomeAA" />
+        <activity android:name=".HowToPlayAA" />
+        <activity android:name=".fingerScreenAA" />
+        <activity android:name=".metronomeLA" />
+        <activity android:name=".HowToPlayLA" />
+        <activity android:name=".fingerScreenLA" />
+        <activity android:name=".metronomeEA" />
+        <activity android:name=".HowToPlayEA" />
+        <activity android:name=".fingerScreenEA" />
+        <activity android:name=".metronomeLE" />
+        <activity android:name=".HowToPlayLE" />
+        <activity android:name=".fingerScreenLE" />
+        <activity android:name=".metronomeLD" />
+        <activity android:name=".HowToPlayLD" />
+        <activity android:name=".fingerScreenLD" />
+        <activity android:name=".congrats3"/>
     </application>
 
 </manifest>

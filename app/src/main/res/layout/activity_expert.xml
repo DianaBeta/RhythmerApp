@@ -680,7 +680,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/help2"
-        android:onClick="help3"
+        android:onClick="howToEA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.919"

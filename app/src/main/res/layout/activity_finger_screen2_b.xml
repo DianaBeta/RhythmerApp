@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".finger_screen2_b"
+    tools:context=".fingerScreenBA"
     android:background="#FFFFE5">
 
     <TextView
@@ -57,7 +57,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
-        android:onClick="backToGame"
+        android:onClick="backToGameBA"
         android:text="@string/back_to_game"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"

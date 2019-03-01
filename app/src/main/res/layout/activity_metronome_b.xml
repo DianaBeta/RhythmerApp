@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".metronome_b"
+    tools:context=".metronomeBA"
     android:background="#FFFFE5">
 
     <TextView
@@ -39,7 +39,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/next3"
         android:textAllCaps="false"
-        android:onClick="next3"
+        android:onClick="nextBA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

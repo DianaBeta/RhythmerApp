@@ -57,9 +57,9 @@ public class beginnerActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void help2(View view) {
+    public void howToBA(View view) {
         // Do something in response to button-goes to the other screen of how to play metromome
-        Intent intent = new Intent(this, metronome_b.class);
+        Intent intent = new Intent(this,metronomeBA.class);
         startActivity(intent);
     }
 
@@ -360,7 +360,7 @@ public class beginnerActivity extends AppCompatActivity {
                         System.out.println(result);
                 }
 
-                long reference_beat_end = 7000;
+                long reference_beat_end = 6500;
                 // add the points
                 int line_width = findViewById(R.id.View04).getMeasuredWidth();
                 int[] location = new int[2];

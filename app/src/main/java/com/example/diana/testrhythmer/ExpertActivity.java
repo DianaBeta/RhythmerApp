@@ -44,8 +44,8 @@ public class ExpertActivity extends AppCompatActivity {
         expertSong2 = MediaPlayer.create(ExpertActivity.this, R.raw.expert2);
         expertSong3 = MediaPlayer.create(ExpertActivity.this, R.raw.expert3);
     }
-    //TODO make help screens
-    public void backtoExpert(View view) {
+
+    public void toExpert(View view) {
         // Do something in response to button goes to beginner activity
         Intent intent = new Intent(this, ExpertActivity.class);
         startActivity(intent);
@@ -53,15 +53,13 @@ public class ExpertActivity extends AppCompatActivity {
 
     public void homeE(View view) {
         // Do something in response to button-goes to home which is login activity
-        Intent intent = new Intent(this, logInExpert.class);
+        Intent intent = new Intent(this,logInExpert.class);
         startActivity(intent);
     }
 
-    //TODO make help screens
-    //TODO change onClick on XML
-    public void help3(View view) {
+    public void howToEA(View view) {
         // Do something in response to button-goes to the other screen of how to play metromome
-        Intent intent = new Intent(this, metronome_b.class);
+        Intent intent = new Intent(this, metronomeEA.class);
         startActivity(intent);
     }
 
@@ -382,7 +380,7 @@ public class ExpertActivity extends AppCompatActivity {
                         System.out.println(result);
                 }
 
-                long reference_beat_end = 7000;
+                long reference_beat_end = 6500;
                 // add the points
                 int line_width = findViewById(R.id.View04).getMeasuredWidth();
                 int[] location = new int[2];

@@ -218,7 +218,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:onClick="howTo"
+        android:onClick="howToL"
         android:contentDescription="@string/help"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

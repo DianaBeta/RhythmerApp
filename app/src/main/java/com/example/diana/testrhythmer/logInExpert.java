@@ -17,28 +17,18 @@ public class logInExpert extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in_expert);
 
-        displayName();
+        //displayName();
 
     }
 
 
-    public void howTo(View view) {
+    public void howToLE(View view) {
         // Do something in response to button-go to howTo activity
-        Intent intent = new Intent(this, metromome.class);
+        Intent intent = new Intent(this, metronomeLE.class);
         startActivity(intent);
 
     }
 
-    private void displayName() {
-
-        SharedPreferences sp = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
-        String name = sp.getString(KEY_NAME, null);
-
-        if (name != null) {
-            textView.setText(String.format("%s %s ,\nget ready to train your rhythm skills!\nHave fun!", getString(R.string.welcomeToTheGame), name));
-
-        }
-    }
 
     public void backtoBeginner(View view){
         Intent intent = new Intent(this, beginnerActivity.class);

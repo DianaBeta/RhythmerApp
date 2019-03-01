@@ -25,9 +25,9 @@ public class loginActivity extends AppCompatActivity {
     /**
      * Called when the user taps the howTo button and send the user to how to play
      */
-    public void howTo(View view) {
+    public void howToL(View view) {
         // Do something in response to button-go to howTo activity
-        Intent intent = new Intent(this, metromome.class);
+        Intent intent = new Intent(this, metromomeL.class);
         startActivity(intent);
 
     }

@@ -5,17 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class how_to_play2_b extends AppCompatActivity {
+public class congrats3 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_how_to_play2_b);
+        setContentView(R.layout.activity_congrats3);
     }
-
-    public void toFingerScreen(View view) {
-        // Do something in response to button
-        Intent intent = new Intent(this, finger_screen2_b.class);
+    public void backHome2(View view) {
+        // Do something in response to button-goes to the other screen of how to play metromome
+        Intent intent = new Intent(this, loginDone.class);
         startActivity(intent);
     }
 

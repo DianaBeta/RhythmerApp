@@ -5,17 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class metromome extends AppCompatActivity {
+public class metronomeEA extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_metromome);
+        setContentView(R.layout.activity_metronome_e);
     }
 
-    public void next2(View view) {
+    public void nextEA(View view) {
         // Do something in response to button
-        Intent intent = new Intent(this,HowToPlay2.class);
+        Intent intent = new Intent(this, HowToPlayEA.class);
         startActivity(intent);
     }
 }

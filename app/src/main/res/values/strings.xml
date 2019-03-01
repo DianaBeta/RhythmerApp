@@ -52,7 +52,7 @@
     <string name="help2">help2</string>
     <string name="help3">help2</string>
     <string name="next_song">Next Song</string>
-    <string name="Congrats">Congrats you finished all Beginner Songs!\n Now you can try the advanced ones!\n GOOD LUCK!</string>
+    <string name="Congrats">Congrats you finished all Beginner Songs!\nNow you can try the advanced ones!\nGOOD LUCK!</string>
     <string name="next_song2">Next Song</string>
     <string name="congrats">Congrats</string>
     <string name="START">START</string>
@@ -66,10 +66,17 @@
     <string name="back_to_game2">Back to game</string>
     <string name="back_to_menu">Back to menu</string>
     <string name="next_level">Next Level</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="goodJob">Good job!\nKeep on going with the next level!</string>
+    <string name="goodJob2">Good job!\nKeep on going with the last level!</string>
+    <string name="goodJobFinished">Good job!\nYou finished all the levels!\nPress the button according to the level you want to repeat!</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="congratulations_you_solved_all_the_beginner_level_songs_you_can_continue_with_the_next_level_or_go_back_to_menu">Congratulations, you solved all the beginner level songs,you can continue with the next level or go back to menu!</string>
+    <string name="tic">TODO</string>
+    <string name="title_activity_metronome_lb">metronomeLB</string>
+    <string name="fireworks">fireworks </string>
+
+
+
 
 
 </resources>

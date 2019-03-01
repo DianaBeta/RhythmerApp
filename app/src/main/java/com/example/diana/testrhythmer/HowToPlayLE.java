@@ -5,19 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class finger_screen2_b extends AppCompatActivity {
+public class HowToPlayLE extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_finger_screen2_b);
+        setContentView(R.layout.activity_how_to_play_le);
     }
-
-    public void backToGame(View view) {
+    public void ToFingerScreenLE(View view) {
         // Do something in response to button
-        Intent intent = new Intent(this, beginnerActivity.class);
+        Intent intent = new Intent(this,fingerScreenLE.class);
         startActivity(intent);
     }
-
-
 }

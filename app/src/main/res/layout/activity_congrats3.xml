@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Congrats2"
+    tools:context=".congrats3"
     android:background="#FFFFE5">
 
     <ImageView
@@ -36,7 +36,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/goodJob2"
+        android:text="@string/goodJobFinished"
         android:textColor="#353EB2"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,6 +44,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.058" />
+
     <Button
         android:id="@+id/button6"
         android:layout_width="wrap_content"
@@ -54,35 +55,15 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/back_to_menu"
-        android:visibility="visible"
-        android:textAllCaps="false"
         android:onClick="backHome2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.035"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.937" />
-
-    <Button
-        android:id="@+id/NextLevel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/next_level"
-        android:visibility="visible"
+        android:text="@string/back_to_menu"
         android:textAllCaps="false"
-        android:onClick="nextLevel2"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.953"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.937" />
+        app:layout_constraintVertical_bias="0.928" />
+
 </android.support.constraint.ConstraintLayout>

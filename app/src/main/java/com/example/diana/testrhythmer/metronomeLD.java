@@ -5,18 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class HowToPlay2 extends AppCompatActivity {
+public class metronomeLD extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_how_to_play2);
+        setContentView(R.layout.activity_metronome_ld);
     }
-
-    public void fingerBeginner(View view) {
+    public void nextLD(View view) {
         // Do something in response to button
-        Intent intent = new Intent(this, fingerScreen.class);
+        Intent intent = new Intent(this, HowToPlayLD.class);
         startActivity(intent);
     }
-
 }
