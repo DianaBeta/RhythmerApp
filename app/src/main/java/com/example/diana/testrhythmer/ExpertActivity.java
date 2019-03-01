@@ -29,6 +29,7 @@ public class ExpertActivity extends AppCompatActivity {
     ArrayList<MediaPlayer> songs = new ArrayList<>();
     int count;
     // int k = 0;
+    long start_time_ms;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,27 +75,36 @@ public class ExpertActivity extends AppCompatActivity {
     public void fillReference1(){
         reference_beat1.clear();
         if (songs.size() == 3) {
-            reference_beat1.add((long) 2664);
-            reference_beat1.add((long) 3004);
-            reference_beat1.add((long) 3709);
-            reference_beat1.add((long) 3970);
-            reference_beat1.add((long) 4597);
+            reference_beat1.add((long) 3284);
+            reference_beat1.add((long) 3991);
+            reference_beat1.add((long) 4748);
+            reference_beat1.add((long) 4921);
+            reference_beat1.add((long) 5101);
+            reference_beat1.add((long) 5304);
+            reference_beat1.add((long) 5491);
 
         } else if (songs.size() == 2) {
-            reference_beat1.add((long) 2925);
-            reference_beat1.add((long) 3578);
-            reference_beat1.add((long) 4310);
-            reference_beat1.add((long) 4675);
-            reference_beat1.add((long) 5302);
+            reference_beat1.add((long) 3188);
+            reference_beat1.add((long) 3553);
+            reference_beat1.add((long) 3935);
+            reference_beat1.add((long) 4116);
+            reference_beat1.add((long) 4305);
+            reference_beat1.add((long) 4502);
+            reference_beat1.add((long) 4683);
+            reference_beat1.add((long) 5439);
+
 
         } else {
-            reference_beat1.add((long) 3030);
-            reference_beat1.add((long) 3369);
-            reference_beat1.add((long) 3996);
-            reference_beat1.add((long) 4440);
-            reference_beat1.add((long) 4702);
-            reference_beat1.add((long) 5381);
-
+            reference_beat1.add((long) 3585);
+            reference_beat1.add((long) 3769);
+            reference_beat1.add((long) 3961);
+            reference_beat1.add((long) 4145);
+            reference_beat1.add((long) 4342);
+            reference_beat1.add((long) 5087);
+            reference_beat1.add((long) 5275);
+            reference_beat1.add((long) 5459);
+            reference_beat1.add((long) 5651);
+            reference_beat1.add((long) 5840);
 
         }
     }
@@ -146,7 +156,7 @@ public class ExpertActivity extends AppCompatActivity {
 
 
         fillReference1();
-        long reference_beat_end = 7000;
+        long reference_beat_end = 6500;
 
 
         // add the points
@@ -164,6 +174,11 @@ public class ExpertActivity extends AppCompatActivity {
         button_list.add((Button)findViewById(R.id.dot_4));
         button_list.add((Button)findViewById(R.id.dot_5));
         button_list.add((Button)findViewById(R.id.dot_6));
+        button_list.add((Button)findViewById(R.id.dot_6));
+        button_list.add((Button)findViewById(R.id.dot_7));
+        button_list.add((Button)findViewById(R.id.dot_8));
+        button_list.add((Button)findViewById(R.id.dot_9));
+        button_list.add((Button)findViewById(R.id.dot_10));
 
 
         System.out.println("Number of songs:" + songs.size());
@@ -260,12 +275,6 @@ public class ExpertActivity extends AppCompatActivity {
         //reaching the start game button to make hide it when the user starts the game
         Button start_button = findViewById(R.id.startGame);
         start_button.setVisibility(View.INVISIBLE);
-
-        final long start_time_ms = System.currentTimeMillis();
-        System.out.println("start time: " + start_time_ms);
-
-        //beginnerSong.start();
-        songs.get(0).start();
 
         //adding the green user_input button after song finishes
         Button userButton = findViewById(R.id.user_button);
@@ -387,6 +396,10 @@ public class ExpertActivity extends AppCompatActivity {
                 ubutton_list.add((Button) findViewById(R.id.udot_4));
                 ubutton_list.add((Button) findViewById(R.id.udot_5));
                 ubutton_list.add((Button) findViewById(R.id.udot_6));
+                ubutton_list.add((Button) findViewById(R.id.udot_7));
+                ubutton_list.add((Button) findViewById(R.id.udot_8));
+                ubutton_list.add((Button) findViewById(R.id.udot_9));
+                ubutton_list.add((Button) findViewById(R.id.udot_10));
 
              /*   ArrayList<Button> ubuttonr_list = new ArrayList<>();
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_1));
@@ -405,10 +418,12 @@ public class ExpertActivity extends AppCompatActivity {
                 for (int j = 0; j < ubutton_list.size(); ++j) {
 
                     if (j < user_beat.size()) {
-                        double point_x_percent = (double) (user_beat.get(j) - user_beat.get(0)) /
-                                (double) (reference_beat_end -user_beat.get(0));
+                        double user_beat_diff = user_beat.get(j) - reference_beat1.get(0);
+                        double point_x_percent = user_beat_diff /
+                                (double) (reference_beat_end - reference_beat1.get(0));
+                        Log.i("pointx_percent", String.valueOf(point_x_percent));
                         int point_x = (int) (point_x_percent * (double) line_width + (double) line_start);
-                        Log.i("BEGINNER_ACTIVITY_BLA", String.valueOf(point_x));
+                        Log.i("pointx", String.valueOf(point_x));
                         // if(user_beat.get(j)!= reference_beat1.get(j)){
                         //Button ubbutton_list.get(j)= findViewById(R.id.udotr_10);
                         //   ubutton_list.get(j).setButton(R.drawable.reddot);
@@ -416,20 +431,35 @@ public class ExpertActivity extends AppCompatActivity {
                         //     ubutton_list.set(j, ubuttonr_list.get(k));
                         //    k++;
                         //}
-                        ubutton_list.get(j).setX(point_x);//set button x position
-                        ubutton_list.get(j).setVisibility(View.VISIBLE);               // make button visible
-                        Log.i("user_beat", String.valueOf(user_beat.get(j)));
-                        System.out.println("Anzahl user Tips" +  user_beat.size());
-                    } else {
-                        ubutton_list.get(j).setVisibility(View.INVISIBLE);             // make button invisible
+                        if (user_beat_diff < -250) {
+
+                            ubutton_list.get(j).setVisibility(View.INVISIBLE);
+                            //TODO:Text View
+                        } else {
+
+                            ubutton_list.get(j).setX(point_x);//set button x position
+                            ubutton_list.get(j).setVisibility(View.VISIBLE);               // make button visible
+                            Log.i("user_beat", String.valueOf(user_beat.get(j)));
+
+                        }
+                        System.out.println("Anzahl user Tips" + user_beat.size());
+                    }
+                    else {
+                        ubutton_list.get(j).setVisibility(View.INVISIBLE);// make button invisible
                     }
 
                 }
                 user_beat.clear();
                 ubutton_list.clear();
-                //               ubuttonr_list.clear();
+                //   ubuttonr_list.clear();
             }
         });
+
+        songs.get(0).start();
+         start_time_ms = System.currentTimeMillis();
+        System.out.println("start time: " + start_time_ms);
+
+
     }
 
     public void NextSong(View view) {

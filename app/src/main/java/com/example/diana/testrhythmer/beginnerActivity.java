@@ -29,6 +29,7 @@ public class beginnerActivity extends AppCompatActivity {
     ArrayList<MediaPlayer> songs = new ArrayList<>();
     int count;
    // int k = 0;
+    long start_time_ms;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,25 +73,25 @@ public class beginnerActivity extends AppCompatActivity {
     public void fillReference1(){
         reference_beat1.clear();
         if (songs.size() == 3) {
-            reference_beat1.add((long) 3733);
-            reference_beat1.add((long) 4549);
-            reference_beat1.add((long) 5285);
-            reference_beat1.add((long) 5657);
-            reference_beat1.add((long) 6065);
+            reference_beat1.add((long) 3221);
+            reference_beat1.add((long) 4026);
+            reference_beat1.add((long) 4831);
+            reference_beat1.add((long) 5218);
+            reference_beat1.add((long) 5627);
         } else if (songs.size() == 2) {
-            reference_beat1.add((long) 3657);
-            reference_beat1.add((long) 4048);
-            reference_beat1.add((long) 4519);
-            reference_beat1.add((long) 5485);
-            reference_beat1.add((long) 5884);
-            reference_beat1.add((long) 6191);
+            reference_beat1.add((long) 3625);
+            reference_beat1.add((long) 4022);
+            reference_beat1.add((long) 4419);
+            reference_beat1.add((long) 5238);
+            reference_beat1.add((long) 5616);
+            reference_beat1.add((long) 6033);
         } else {
-            reference_beat1.add((long) 3343);
-            reference_beat1.add((long) 4153);
-            reference_beat1.add((long) 4571);
-            reference_beat1.add((long) 4937);
-            reference_beat1.add((long) 5381);
-            reference_beat1.add((long) 5746);
+            reference_beat1.add((long) 3506);
+            reference_beat1.add((long) 4053);
+            reference_beat1.add((long) 4461);
+            reference_beat1.add((long) 4860);
+            reference_beat1.add((long) 5259);
+            reference_beat1.add((long) 5658);
         }
     }
 
@@ -141,7 +142,7 @@ public class beginnerActivity extends AppCompatActivity {
 
 
         fillReference1();
-        long reference_beat_end = 7000;
+        long reference_beat_end = 6500;
 
 
       // add the points
@@ -256,11 +257,6 @@ public class beginnerActivity extends AppCompatActivity {
         Button start_button = findViewById(R.id.startGame);
         start_button.setVisibility(View.INVISIBLE);
 
-        final long start_time_ms = System.currentTimeMillis();
-        System.out.println("start time: " + start_time_ms);
-
-        //beginnerSong.start();
-        songs.get(0).start();
 
         //adding the green user_input button after song finishes
         Button userButton = findViewById(R.id.user_button);
@@ -292,10 +288,6 @@ public class beginnerActivity extends AppCompatActivity {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
 
-                //songs.get(0).stop();
-                //songs.get(0).release();
-                //mediaPlayer.release();
-                //mediaPlayer=null;
 
                 Button userButton = findViewById(R.id.user_button);
                 userButton.setVisibility(View.INVISIBLE);
@@ -400,22 +392,31 @@ public class beginnerActivity extends AppCompatActivity {
                 for (int j = 0; j < ubutton_list.size(); ++j) {
 
                     if (j < user_beat.size()) {
-                        double point_x_percent = (double) (user_beat.get(j) - user_beat.get(0)) /
-                                (double) (reference_beat_end -user_beat.get(0));
+                        double user_beat_diff = user_beat.get(j) - reference_beat1.get(0);
+                        double point_x_percent = user_beat_diff /
+                                (double) (reference_beat_end - reference_beat1.get(0));
+                        Log.i("point_x_percent=", String.valueOf(point_x_percent));
                         int point_x = (int) (point_x_percent * (double) line_width + (double) line_start);
-                        Log.i("BEGINNER_ACTIVITY_BLA", String.valueOf(point_x));
-                       // if(user_beat.get(j)!= reference_beat1.get(j)){
-                            //Button ubbutton_list.get(j)= findViewById(R.id.udotr_10);
-                         //   ubutton_list.get(j).setButton(R.drawable.reddot);
-                       // } else {
-                       //     ubutton_list.set(j, ubuttonr_list.get(k));
+                        Log.i("pointx", String.valueOf(point_x));
+                        // if(user_beat.get(j)!= reference_beat1.get(j)){
+                        //Button ubbutton_list.get(j)= findViewById(R.id.udotr_10);
+                        //   ubutton_list.get(j).setButton(R.drawable.reddot);
+                        // } else {
+                        //     ubutton_list.set(j, ubuttonr_list.get(k));
                         //    k++;
                         //}
-                        ubutton_list.get(j).setX(point_x);//set button x position
-                        ubutton_list.get(j).setVisibility(View.VISIBLE);               // make button visible
-                        Log.i("user_beat", String.valueOf(user_beat.get(j)));
-                        System.out.println("Anzahl user Tips" +  user_beat.size());
-                    } else {
+                        if (user_beat_diff < -250) {
+                            ubutton_list.get(j).setVisibility(View.INVISIBLE);
+                            //TODO: Texfield that says you pressed before during the metronome
+
+                        } else {
+                            ubutton_list.get(j).setX(point_x);//set button x position
+                            ubutton_list.get(j).setVisibility(View.VISIBLE);               // make button visible
+                            Log.i("user_beat", String.valueOf(user_beat.get(j)));
+
+                        }
+                        System.out.println("Anzahl user Tips" + user_beat.size());
+                    }  else{
                         ubutton_list.get(j).setVisibility(View.INVISIBLE);             // make button invisible
                     }
 
@@ -425,6 +426,11 @@ public class beginnerActivity extends AppCompatActivity {
  //               ubuttonr_list.clear();
             }
         });
+
+        songs.get(0).start();
+        start_time_ms = System.currentTimeMillis();
+        System.out.println("start time: " + start_time_ms);
+
     }
 
     public void NextSong(View view) {
