@@ -130,7 +130,7 @@ public class beginnerActivity extends AppCompatActivity {
 
     public void play(View view) {
         udotsInvisible();
-        user_beat.clear();
+        //user_beat.clear();
 
         // Play the first song of the ArrayList
         //createMusic();
@@ -256,6 +256,9 @@ public class beginnerActivity extends AppCompatActivity {
         //reaching the start game button to make hide it when the user starts the game
         Button start_button = findViewById(R.id.startGame);
         start_button.setVisibility(View.INVISIBLE);
+
+        TextView early = findViewById(R.id.early);
+        early.setVisibility(View.INVISIBLE);
 
 
         //adding the green user_input button after song finishes
@@ -407,8 +410,9 @@ public class beginnerActivity extends AppCompatActivity {
                         //}
                         if (user_beat_diff < -250) {
                             ubutton_list.get(j).setVisibility(View.INVISIBLE);
-                            //TODO: Texfield that says you pressed before during the metronome
-
+                            // Texfield that says you pressed before during the metronome
+                            TextView early = findViewById(R.id.early);
+                            early.setVisibility(View.VISIBLE);
                         } else {
                             ubutton_list.get(j).setX(point_x);//set button x position
                             ubutton_list.get(j).setVisibility(View.VISIBLE);               // make button visible
@@ -424,6 +428,7 @@ public class beginnerActivity extends AppCompatActivity {
                 user_beat.clear();
                 ubutton_list.clear();
  //               ubuttonr_list.clear();
+
             }
         });
 

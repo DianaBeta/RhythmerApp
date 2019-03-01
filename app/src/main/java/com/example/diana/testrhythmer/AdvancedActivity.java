@@ -135,7 +135,7 @@ public class AdvancedActivity extends AppCompatActivity {
 
     public void play(View view) {
         udotsInvisible();
-        user_beat.clear();
+        //user_beat.clear();
 
         // Play the first song of the ArrayList
         //createMusic();
@@ -262,6 +262,9 @@ public class AdvancedActivity extends AppCompatActivity {
         Button start_button = findViewById(R.id.startGame);
         start_button.setVisibility(View.INVISIBLE);
 
+        TextView early = findViewById(R.id.early);
+        early.setVisibility(View.INVISIBLE);
+
 
         //adding the green user_input button after song finishes
         Button userButton = findViewById(R.id.user_button);
@@ -300,6 +303,7 @@ public class AdvancedActivity extends AppCompatActivity {
                 Button start_button = findViewById(R.id.startGame);
                 start_button.setText(getString(R.string.RESTART));
                 start_button.setVisibility(View.VISIBLE);
+
 
                 //changing the play button to replay after song finishes
                 ImageButton imgButton = findViewById(R.id.imageButton);
@@ -364,7 +368,7 @@ public class AdvancedActivity extends AppCompatActivity {
                         System.out.println(result);
                 }
 
-                long reference_beat_end = 6000;
+                long reference_beat_end = 6500;
                 // add the points
                 int line_width = findViewById(R.id.View04).getMeasuredWidth();
                 int[] location = new int[2];
@@ -399,7 +403,7 @@ public class AdvancedActivity extends AppCompatActivity {
                         double user_beat_diff = user_beat.get(j) - reference_beat1.get(0);
                         double point_x_percent = user_beat_diff /
                                 (double) (reference_beat_end - reference_beat1.get(0));
-                        Log.i("pointx_percent", String.valueOf(point_x_percent));
+                        Log.i("point_x_percent=", String.valueOf(point_x_percent));
                         int point_x = (int) (point_x_percent * (double) line_width + (double) line_start);
                         Log.i("pointx", String.valueOf(point_x));
                         // if(user_beat.get(j)!= reference_beat1.get(j)){
@@ -410,34 +414,32 @@ public class AdvancedActivity extends AppCompatActivity {
                         //    k++;
                         //}
                         if (user_beat_diff < -250) {
-
                             ubutton_list.get(j).setVisibility(View.INVISIBLE);
-                            //TODO:Text View
+                            // Texfield that says you pressed before during the metronome
+                            TextView early = findViewById(R.id.early);
+                            early.setVisibility(View.VISIBLE);
                         } else {
-
                             ubutton_list.get(j).setX(point_x);//set button x position
                             ubutton_list.get(j).setVisibility(View.VISIBLE);               // make button visible
                             Log.i("user_beat", String.valueOf(user_beat.get(j)));
 
                         }
                         System.out.println("Anzahl user Tips" + user_beat.size());
-                    }
-                    else {
-                        ubutton_list.get(j).setVisibility(View.INVISIBLE);// make button invisible
+                    }  else{
+                        ubutton_list.get(j).setVisibility(View.INVISIBLE);             // make button invisible
                     }
 
                 }
                 user_beat.clear();
                 ubutton_list.clear();
-                //   ubuttonr_list.clear();
+                //               ubuttonr_list.clear();
+
             }
         });
-
 
         songs.get(0).start();
         start_time_ms = System.currentTimeMillis();
         System.out.println("start time: " + start_time_ms);
-
 
     }
 

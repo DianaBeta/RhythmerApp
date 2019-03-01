@@ -74,6 +74,7 @@
     <string name="tic">TODO</string>
     <string name="title_activity_metronome_lb">metronomeLB</string>
     <string name="fireworks">fireworks </string>
+    <string name="tooEarly">You pressed during the first fourth metronomes.</string>
 
 
 

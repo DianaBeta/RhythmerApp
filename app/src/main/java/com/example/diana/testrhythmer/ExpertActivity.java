@@ -120,6 +120,14 @@ public class ExpertActivity extends AppCompatActivity {
         dot5.setVisibility(View.INVISIBLE);
         Button dot6 = findViewById(R.id.dot_6);
         dot6.setVisibility(View.INVISIBLE);
+        Button dot7 = findViewById(R.id.dot_7);
+        dot7.setVisibility(View.INVISIBLE);
+        Button dot8 = findViewById(R.id.dot_8);
+        dot8.setVisibility(View.INVISIBLE);
+        Button dot9 = findViewById(R.id.dot_9);
+        dot9.setVisibility(View.INVISIBLE);
+        Button dot10 = findViewById(R.id.dot_10);
+        dot10.setVisibility(View.INVISIBLE);
         reference_beat1.clear();
     }
 
@@ -136,13 +144,21 @@ public class ExpertActivity extends AppCompatActivity {
         udot5.setVisibility(View.INVISIBLE);
         Button udot6 = findViewById(R.id.udot_6);
         udot6.setVisibility(View.INVISIBLE);
+        Button udot7 = findViewById(R.id.udot_7);
+        udot7.setVisibility(View.INVISIBLE);
+        Button udot8 = findViewById(R.id.udot_8);
+        udot8.setVisibility(View.INVISIBLE);
+        Button udot9 = findViewById(R.id.udot_9);
+        udot9.setVisibility(View.INVISIBLE);
+        Button udot10 = findViewById(R.id.udot_10);
+        udot10.setVisibility(View.INVISIBLE);
         user_beat.clear();
     }
 
 
     public void play(View view) {
         udotsInvisible();
-        user_beat.clear();
+        //user_beat.clear();
 
         // Play the first song of the ArrayList
         //createMusic();
@@ -179,7 +195,7 @@ public class ExpertActivity extends AppCompatActivity {
         button_list.add((Button)findViewById(R.id.dot_10));
 
 
-        System.out.println("Number of songs:" + songs.size());
+       // System.out.println("Number of songs:" + songs.size());
 
         for (int i = 0; i < button_list.size(); ++i) {
             if (i < reference_beat1.size()) {
@@ -274,9 +290,13 @@ public class ExpertActivity extends AppCompatActivity {
         Button start_button = findViewById(R.id.startGame);
         start_button.setVisibility(View.INVISIBLE);
 
+        TextView early = findViewById(R.id.early);
+        early.setVisibility(View.INVISIBLE);
+
         //adding the green user_input button after song finishes
         Button userButton = findViewById(R.id.user_button);
         userButton.setVisibility(View.VISIBLE);
+
         userButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -432,7 +452,9 @@ public class ExpertActivity extends AppCompatActivity {
                         if (user_beat_diff < -250) {
 
                             ubutton_list.get(j).setVisibility(View.INVISIBLE);
-                            //TODO:Text View
+                            // Texfield that says you pressed before during the metronome
+                            TextView early = findViewById(R.id.early);
+                            early.setVisibility(View.VISIBLE);
                         } else {
 
                             ubutton_list.get(j).setX(point_x);//set button x position
