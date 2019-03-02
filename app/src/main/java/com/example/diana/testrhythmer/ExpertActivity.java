@@ -188,7 +188,6 @@ public class ExpertActivity extends AppCompatActivity {
         button_list.add((Button)findViewById(R.id.dot_4));
         button_list.add((Button)findViewById(R.id.dot_5));
         button_list.add((Button)findViewById(R.id.dot_6));
-        button_list.add((Button)findViewById(R.id.dot_6));
         button_list.add((Button)findViewById(R.id.dot_7));
         button_list.add((Button)findViewById(R.id.dot_8));
         button_list.add((Button)findViewById(R.id.dot_9));
@@ -202,7 +201,7 @@ public class ExpertActivity extends AppCompatActivity {
                 double point_x_percent = (double) (reference_beat1.get(i) - reference_beat1.get(0)) /
                         (double) (reference_beat_end - reference_beat1.get(0));
                 int point_x = (int) (point_x_percent * (double) line_width + (double) line_start);
-                Log.i("BEGINNER_ACTIVITY_BLA", String.valueOf(point_x));
+               // Log.i("BEGINNER_ACTIVITY_BLA", String.valueOf(point_x));
                 button_list.get(i).setX(point_x);                               //set button x position
                 button_list.get(i).setVisibility(View.VISIBLE);                 // make button visible
             } else {
