@@ -13,7 +13,7 @@ public class congrats3 extends AppCompatActivity {
         setContentView(R.layout.activity_congrats3);
     }
     public void backHome2(View view) {
-        // Do something in response to button-goes to the other screen of how to play metromome
+        // Do something in response to button; goes to the screen where you can choose the levels, all levels unblocked as the user finished the game
         Intent intent = new Intent(this, loginDone.class);
         startActivity(intent);
     }

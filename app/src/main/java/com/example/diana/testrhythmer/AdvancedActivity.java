@@ -45,14 +45,14 @@ public class AdvancedActivity extends AppCompatActivity {
         advancedSong3 = MediaPlayer.create(AdvancedActivity.this, R.raw.advanced3);
     }
 
-    public void backtoAdvanced(View view) {
+   /* public void backtoAdvanced(View view) {
         // Do something in response to button goes to beginner activity
         Intent intent = new Intent(this, AdvancedActivity.class);
         startActivity(intent);
-    }
+    }*/
 
     public void homeA(View view) {
-        // Do something in response to button-goes to home which is login activity
+        // Do something in response to button;goes to home which is where we can choose the levels and advanced and beginner are unlocked
         Intent intent = new Intent(this, loginAdvanced.class);
         startActivity(intent);
     }
@@ -439,6 +439,7 @@ public class AdvancedActivity extends AppCompatActivity {
     }
 
     public void NextActivity(){
+        //goes to next activity which is congratulations activity to continue with the next level, expert in this case
         Intent intent = new Intent(this,Congrats2.class);
         startActivity(intent);
     }

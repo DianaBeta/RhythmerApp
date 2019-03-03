@@ -13,7 +13,7 @@ public class metronomeLA extends AppCompatActivity {
         setContentView(R.layout.activity_metronome_l2);
     }
     public void nextLA(View view) {
-        // Do something in response to button
+        // Do something in response to button; goes to one of the how to play screens
         Intent intent = new Intent(this, HowToPlayLA.class);
         startActivity(intent);
     }

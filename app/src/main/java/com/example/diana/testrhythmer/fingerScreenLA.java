@@ -13,7 +13,7 @@ public class fingerScreenLA extends AppCompatActivity {
         setContentView(R.layout.activity_finger_screen_l);
     }
     public void backHomeLA(View view) {
-        // Do something in response to button-goes back to beginner activity
+        // Do something in response to button;from the help screen goes back to loginActivity where you can choose the levels, beginner and advanced unblocked
         Intent intent = new Intent(this,loginAdvanced.class);
         startActivity(intent);
     }

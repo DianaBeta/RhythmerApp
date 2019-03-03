@@ -13,7 +13,7 @@ public class fingerScreenLE extends AppCompatActivity {
         setContentView(R.layout.activity_finger_screen_le);
     }
     public void backHomeLE(View view) {
-        // Do something in response to button-goes back to beginner activity
+        // Do something in response to button;from the help screen goes back to loginActivity where you can choose the levels, beginner,advanced adn expert unblocked adn the user is ready to start with Expert
         Intent intent = new Intent(this,logInExpert.class);
         startActivity(intent);
     }

@@ -13,7 +13,7 @@ public class HowToPlayAA extends AppCompatActivity {
         setContentView(R.layout.activity_how_to_play_a);
     }
     public void ToFingerScreenAA(View view) {
-        // Do something in response to button
+        // Do something in response to button; goes to the first of th
         Intent intent = new Intent(this,fingerScreenAA.class);
         startActivity(intent);
     }

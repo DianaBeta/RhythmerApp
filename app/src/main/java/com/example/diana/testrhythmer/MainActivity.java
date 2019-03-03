@@ -28,7 +28,7 @@ private static final String KEY_NAME="key_username";
         editText= findViewById(R.id.editText);
     }
 
-    public void saveName(){
+    public void saveName(){ // saves the name of nickname of the user, throws and error if the user does not type anything
         String name = editText.getText().toString().trim();
         empty = false;
 

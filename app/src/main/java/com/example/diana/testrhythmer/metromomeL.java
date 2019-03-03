@@ -14,7 +14,7 @@ public class metromomeL extends AppCompatActivity {
     }
 
     public void nextL(View view) {
-        // Do something in response to button
+        // Do something in response to button; goes to one of the how to play screens
         Intent intent = new Intent(this,HowToPlayL.class);
         startActivity(intent);
     }

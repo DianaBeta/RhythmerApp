@@ -14,7 +14,7 @@ public class metronomeEA extends AppCompatActivity {
     }
 
     public void nextEA(View view) {
-        // Do something in response to button
+        // Do something in response to button; goes to one of the how to play screens
         Intent intent = new Intent(this, HowToPlayEA.class);
         startActivity(intent);
     }

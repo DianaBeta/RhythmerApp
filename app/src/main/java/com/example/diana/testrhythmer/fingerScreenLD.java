@@ -13,7 +13,7 @@ public class fingerScreenLD extends AppCompatActivity {
         setContentView(R.layout.activity_finger_screen_ld);
     }
     public void backHomeLD(View view) {
-        // Do something in response to button-goes back to beginner activity
+        // Do something in response to button; goes to the screen where you can choose the levels, all levels unblocked as the user finished the game
         Intent intent = new Intent(this,loginDone.class);
         startActivity(intent);
     }

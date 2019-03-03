@@ -442,6 +442,7 @@ public class beginnerActivity extends AppCompatActivity {
     }
 
     public void NextActivity(){
+        //goes to next activity which is congratulations activity to continue with the next level, advanced in this case
         Intent intent = new Intent(this,Congrats.class);
         startActivity(intent);
     }

@@ -14,7 +14,7 @@ public class fingerScreenBA extends AppCompatActivity {
     }
 
     public void backToGameBA(View view) {
-        // Do something in response to button
+        // Do something in response to button;from the help screen goes back to beginner activity
         Intent intent = new Intent(this, beginnerActivity.class);
         startActivity(intent);
     }

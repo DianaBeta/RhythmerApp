@@ -68,7 +68,7 @@
     <string name="next_level">Next Level</string>
     <string name="goodJob">Good job!\nKeep on going with the next level!</string>
     <string name="goodJob2">Good job!\nKeep on going with the last level!</string>
-    <string name="goodJobFinished">Good job!\nYou completed all the levels!\nYou can repeat a level of your choice!</string>
+    <string name="goodJobFinished">Good job!\nYou completed all the levels!\nYou can choose a level to repeat and play again!</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="congratulations_you_solved_all_the_beginner_level_songs_you_can_continue_with_the_next_level_or_go_back_to_menu">Congratulations, you solved all the beginner level songs,you can continue with the next level or go back to menu!</string>
     <string name="tic">TODO</string>

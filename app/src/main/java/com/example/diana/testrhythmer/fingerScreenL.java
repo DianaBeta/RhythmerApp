@@ -14,7 +14,7 @@ public class fingerScreenL extends AppCompatActivity {
     }
 
     public void backHomeL(View view) {
-        // Do something in response to button-goes back to beginner activity
+        // Do something in response to button;from the help screen goes back to loginActivity where you can choose the levels, beginner unblocked
         Intent intent = new Intent(this,loginActivity.class);
         startActivity(intent);
     }

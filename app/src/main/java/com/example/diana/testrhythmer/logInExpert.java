@@ -20,23 +20,26 @@ public class logInExpert extends AppCompatActivity {
 
 
     public void howToLE(View view) {
-        // Do something in response to button-go to howTo activity
+        // Do something in response to button;go to how to play activity
         Intent intent = new Intent(this, metronomeLE.class);
         startActivity(intent);
     }
 
 
     public void backtoBeginner(View view){
+        // Do something in response to button;go to how beginner activity
         Intent intent = new Intent(this, beginnerActivity.class);
         startActivity(intent);
     }
 
     public void backtoAdvanced(View view){
+        // Do something in response to button; goes back to Advanced activity
         Intent intent = new Intent(this, AdvancedActivity.class);
         startActivity(intent);
     }
 
     public void toExpert(View view){
+        // Do something in response to button; goes  to Expert activity
         Intent intent = new Intent(this, ExpertActivity.class);
         startActivity(intent);
     }

@@ -475,11 +475,12 @@ public class ExpertActivity extends AppCompatActivity {
     }
 
     public void NextActivity(){
-        Intent intent = new Intent(this,Congrats2.class);
+        // goes to final congratulations screen
+        Intent intent = new Intent(this,congrats3.class);
         startActivity(intent);
     }
     protected void onPause() {
-        // pause the song when closing app
+        // pause the song when closing  the app
         super.onPause();
         songs.get(0).stop();
     }
