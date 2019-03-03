@@ -17,28 +17,21 @@ public class loginDone extends AppCompatActivity {
         // Do something in response to button-go to howTo activity
         Intent intent = new Intent(this,metronomeLD.class);
         startActivity(intent);
-
     }
 
 
     public void backtoBeginner(View view){
         Intent intent = new Intent(this, beginnerActivity.class);
         startActivity(intent);
-
     }
 
     public void backtoAdvanced(View view){
         Intent intent = new Intent(this, AdvancedActivity.class);
         startActivity(intent);
-
     }
 
     public void toExpert(View view){
         Intent intent = new Intent(this, ExpertActivity.class);
         startActivity(intent);
-
     }
-
-
-
 }

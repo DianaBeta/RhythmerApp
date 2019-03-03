@@ -78,7 +78,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/please_select_your_mode"
-        android:textColor="#353EB2"
+        android:textColor="@color/colorAccent"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -134,7 +134,7 @@
     <Button
         android:id="@+id/button5"
         android:layout_width="189dp"
-        android:layout_height="48dp"
+        android:layout_height="46dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="416dp"
@@ -143,6 +143,7 @@
         android:layout_marginBottom="16dp"
         android:background="#D3D3D3"
         android:text="@string/expert"
+        android:onClick="onExpert"
         android:textAllCaps="false"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -247,5 +248,26 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.575"
         app:srcCompat="@drawable/tic" />
+
+    <TextView
+        android:id="@+id/startA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/StartA"
+        android:textAllCaps="false"
+        android:textColor="#028B00"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.882"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.736" />
 
 </android.support.constraint.ConstraintLayout>

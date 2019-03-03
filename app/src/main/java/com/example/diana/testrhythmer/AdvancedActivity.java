@@ -44,7 +44,7 @@ public class AdvancedActivity extends AppCompatActivity {
         advancedSong2 = MediaPlayer.create(AdvancedActivity.this, R.raw.advanced2);
         advancedSong3 = MediaPlayer.create(AdvancedActivity.this, R.raw.advanced3);
     }
-//TODO make help screens
+
     public void backtoAdvanced(View view) {
         // Do something in response to button goes to beginner activity
         Intent intent = new Intent(this, AdvancedActivity.class);
@@ -57,8 +57,6 @@ public class AdvancedActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //TODO make help screens
-    //TODO change onClick on XML
     public void howToAA(View view) {
         // Do something in response to button-goes to the other screen of how to play metromome
         Intent intent = new Intent(this, metronomeAA.class);
@@ -131,7 +129,7 @@ public class AdvancedActivity extends AppCompatActivity {
         user_beat.clear();
     }
 
-// Press PlayButton
+    // Press PlayButton
     public void play(View view) {
         udotsInvisible();
 
@@ -151,7 +149,8 @@ public class AdvancedActivity extends AppCompatActivity {
         int[] location = new int[2];
         this.findViewById(R.id.View03).getLocationInWindow(location);
         int line_start = location[0];
-            // Create ArrayList with invisible referenceDots
+
+        // Create ArrayList with invisible referenceDots
         ArrayList<Button> button_list = new ArrayList<Button>();
         button_list.add((Button)findViewById(R.id.dot_1));
         button_list.add((Button)findViewById(R.id.dot_2));
@@ -200,12 +199,10 @@ public class AdvancedActivity extends AppCompatActivity {
         });
     }
 
-    /*
-    compare the beat input with the reference beat --> 0,1 or 2:
+    /*compare the beat input with the reference beat --> 0,1 or 2:
     2: LOST: User tapped too often or too rarely
     1: WIN: User tapped as required (amount + time)
-    0: LOST: Amount as required but not the time
-    */
+    0: LOST: Amount as required but not the time*/
 
     public static int compareArrays(ArrayList<Long> array1, ArrayList<Long> array2) {
         result = 0; //final result
@@ -236,6 +233,7 @@ public class AdvancedActivity extends AppCompatActivity {
         Button start_button = findViewById(R.id.startGame);
         start_button.setVisibility(View.INVISIBLE);
 
+        // make note "You pressed before 4x metronome" invisible
         TextView early = findViewById(R.id.early);
         early.setVisibility(View.INVISIBLE);
 
@@ -260,6 +258,7 @@ public class AdvancedActivity extends AppCompatActivity {
         //changing the play button to pause while playing
         imgButton.setImageResource(android.R.drawable.ic_media_play);
 
+        // make result view gone
         final TextView result_display = findViewById(R.id.result_view);
         result_display.setVisibility(View.GONE);
 
@@ -269,20 +268,18 @@ public class AdvancedActivity extends AppCompatActivity {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
 
+                // make green userButton invisible// make StartButton to Restart and visible // play to replay
                 Button userButton = findViewById(R.id.user_button);
                 userButton.setVisibility(View.INVISIBLE);
-
                 Button start_button = findViewById(R.id.startGame);
                 start_button.setText(getString(R.string.RESTART));
                 start_button.setVisibility(View.VISIBLE);
-
-
-                //changing the play button to replay after song finishes
                 ImageButton imgButton = findViewById(R.id.imageButton);
                 imgButton.setImageResource(R.drawable.replay);
 
-                //refresh(for the next round) and define reference beat values
+                //refresh(for the next try) and define reference beat values
                 fillReference1();
+
                 //System.out.println("reference beat list: " + reference_beat1);
 
                 //calculate and result output
@@ -302,7 +299,6 @@ public class AdvancedActivity extends AppCompatActivity {
                         System.out.println("You pressed " + user_beat.size() + " times.");
                         System.out.println("TRY AGAIN NOW!");*/
                         break;
-
                     case 1://when result is 1
                         userButton.setVisibility(View.INVISIBLE);
                         //start_button.setText("NEXT LEVEL COMING SOON");
@@ -321,7 +317,6 @@ public class AdvancedActivity extends AppCompatActivity {
                         Button NextSong = findViewById(R.id.NextSong);
                         NextSong.setVisibility(View.VISIBLE);
                         break;
-
                     case 0://when result is 0
                         userButton.setVisibility(View.INVISIBLE);
 
@@ -336,9 +331,10 @@ public class AdvancedActivity extends AppCompatActivity {
                         System.out.println("Only " + win_counter + " out of " + reference_beat.size() + " beats were right!");
                         System.out.println("TRY AGAIN NOW!"); //this will be implemented as a feature later on*/
                     default:
-                        System.out.println(result);
+                       // System.out.println(result);
                 }
 
+                //define length for calculation
                 long reference_beat_end = 6500;
                 // add the points
                 int line_width = findViewById(R.id.View04).getMeasuredWidth();
@@ -346,6 +342,7 @@ public class AdvancedActivity extends AppCompatActivity {
                 findViewById(R.id.View04).getLocationInWindow(location);
                 int line_start = location[0];
 
+                //fill invisible userButtons
                 ArrayList<Button> ubutton_list = new ArrayList<>();
                 ubutton_list.add((Button) findViewById(R.id.udot_1));
                 ubutton_list.add((Button) findViewById(R.id.udot_2));
@@ -367,12 +364,11 @@ public class AdvancedActivity extends AppCompatActivity {
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_10));
                 */
 
-
+                // go through all userbuttons and set as many visible as contained userbeats
                 for (int j = 0; j < ubutton_list.size(); ++j) {
                     if (j < user_beat.size()) {
                         double user_beat_diff = user_beat.get(j) - reference_beat1.get(0);
-                        double point_x_percent = user_beat_diff /
-                                (double) (reference_beat_end - reference_beat1.get(0));
+                        double point_x_percent = user_beat_diff / (double) (reference_beat_end - reference_beat1.get(0)); //Ensures the same scala as at reference beat
                        // Log.i("point_x_percent=", String.valueOf(point_x_percent));
                         int point_x = (int) (point_x_percent * (double) line_width + (double) line_start);
                         //Log.i("pointx", String.valueOf(point_x));
@@ -383,44 +379,38 @@ public class AdvancedActivity extends AppCompatActivity {
                         //     ubutton_list.set(j, ubuttonr_list.get(k));
                         //    k++;
                         //}
+                        // ignore all dots before the 4x metronome (else) // except those inside the tolerance (if)
                         if (user_beat_diff < -250) {
                             ubutton_list.get(j).setVisibility(View.INVISIBLE);
-                            // Texfield that says you pressed before during the metronome
-                            TextView early = findViewById(R.id.early);
+                            TextView early = findViewById(R.id.early); // make note "you pressed before 4x metronome" visible
                             early.setVisibility(View.VISIBLE);
                         } else {
                             ubutton_list.get(j).setX(point_x);//set button x position
-                            ubutton_list.get(j).setVisibility(View.VISIBLE);               // make button visible
+                            ubutton_list.get(j).setVisibility(View.VISIBLE);
                            // Log.i("user_beat", String.valueOf(user_beat.get(j)));
                         }
                         //System.out.println("Anzahl user Tips" + user_beat.size());
                     }  else{
-                        ubutton_list.get(j).setVisibility(View.INVISIBLE);             // make button invisible
+                        ubutton_list.get(j).setVisibility(View.INVISIBLE);
                     }
-
                 }
                 user_beat.clear();
                 ubutton_list.clear();
                 //   ubuttonr_list.clear();
-
             }
         });
 
+        //start song (in here: reduced computation time) & save ms
         songs.get(0).start();
         start_time_ms = System.currentTimeMillis();
         //System.out.println("start time: " + start_time_ms);
-
     }
 
     public void NextSong(View view) {
         // Logic following
+        // Delete first song in the array until no song is left // set NexSong and result invisible
         if (songs.size() == 3) {
-            songs.get(0).stop();
             songs.get(0).release();
-            mediaPlayer.release();
-            mediaPlayer=null;
-            //songs.get(0).reset();
-            //mediaPlayer.reset();
             songs.remove(0);
             Button NextSong = findViewById(R.id.NextSong);
             NextSong.setVisibility(View.INVISIBLE);
@@ -433,29 +423,19 @@ public class AdvancedActivity extends AppCompatActivity {
             NextSong.setVisibility(View.INVISIBLE);
             final TextView result_display = findViewById(R.id.result_view);
             result_display.setVisibility(View.INVISIBLE);
-        } else /*if (songs.size() ==1)*/ {
-            // songs.get(0).release();
-            // songs.remove(0);
+        } else  {
             Button NextSong = findViewById(R.id.NextSong);
             NextSong.setVisibility(View.GONE);
             NextActivity();
         }
-
-
-
         // Make all reference nodes invisible
         dotsInvisible();
         // Make all user nodes invisible
         udotsInvisible();
 
-
-
-        //TODO : Replay Button to Play Button!
         //changing the play button to replay after song finishes
         ImageButton imgButton = findViewById(R.id.imageButton);
         imgButton.setImageResource(R.drawable.ic_media_play);
-
-
     }
 
     public void NextActivity(){
@@ -465,10 +445,8 @@ public class AdvancedActivity extends AppCompatActivity {
     protected void onPause() {
         // pause the song when closing app
         super.onPause();
-        //songs.get(0).release();
         songs.get(0).stop();
     }
-
 }
 
 

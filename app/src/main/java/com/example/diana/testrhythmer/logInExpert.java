@@ -16,9 +16,6 @@ public class logInExpert extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in_expert);
-
-        //displayName();
-
     }
 
 
@@ -26,26 +23,21 @@ public class logInExpert extends AppCompatActivity {
         // Do something in response to button-go to howTo activity
         Intent intent = new Intent(this, metronomeLE.class);
         startActivity(intent);
-
     }
 
 
     public void backtoBeginner(View view){
         Intent intent = new Intent(this, beginnerActivity.class);
         startActivity(intent);
-
     }
 
     public void backtoAdvanced(View view){
         Intent intent = new Intent(this, AdvancedActivity.class);
         startActivity(intent);
-
     }
 
     public void toExpert(View view){
         Intent intent = new Intent(this, ExpertActivity.class);
         startActivity(intent);
     }
-
-
 }
