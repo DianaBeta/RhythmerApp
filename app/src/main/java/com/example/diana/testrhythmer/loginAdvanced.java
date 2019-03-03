@@ -12,6 +12,11 @@ public class loginAdvanced extends AppCompatActivity {
     private static final String SHARED_PREF_NAME = "username";
     private static final String KEY_NAME = "key_username";
 
+    public void onExpert(View view) {
+        textView= findViewById(R.id.startA);
+        textView.setVisibility(View.VISIBLE);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,11 +41,6 @@ public class loginAdvanced extends AppCompatActivity {
         startActivity(intent);
         textView= findViewById(R.id.startA);
         textView.setVisibility(View.INVISIBLE);
-    }
-
-    public void onExpert(View view) {
-        textView= findViewById(R.id.startA);
-        textView.setVisibility(View.VISIBLE);
     }
 }
 
