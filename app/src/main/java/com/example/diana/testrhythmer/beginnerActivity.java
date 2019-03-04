@@ -230,6 +230,51 @@ public class beginnerActivity extends AppCompatActivity {
         return result;
     }
 
+    public static void compareArrays2(ArrayList<Long> user, ArrayList<Long> reference) {
+        ArrayList<Integer> user_valid = new ArrayList<>();
+        ArrayList<Long> user_valid_diff = new ArrayList<>();
+        for (int i = 0; i < user.size(); ++i) {
+            int closest_id = -1;
+            long closest_diff = 250;
+            for (int j = 0; j < reference.size(); ++j) {
+                Long diff = Math.abs(user.get(i) - reference.get(j));
+                if (diff < closest_diff) {
+                    closest_id = j;
+                    closest_diff = diff;
+                }
+            }
+            user_valid.add(closest_id);
+            user_valid_diff.add(closest_diff);
+        }
+
+        for (int i = 0; i < user_valid.size(); ++i) {
+            Log.i("USER_VALID", String.valueOf(user_valid.get(i)));
+        }
+
+        for (int j = 0; j < reference.size(); ++j) {
+            int closest_id = -1;
+            long closest_diff = 1000;
+            for (int i = 0; i < user.size(); ++i) {
+                if (user_valid.get(i) != j)
+                    continue;
+                if (user_valid_diff.get(i) < closest_diff) {
+                    if (closest_id >= 0) {
+                        user_valid.set(closest_id, -1);
+                    }
+                    closest_id = i;
+                    closest_diff = user_valid_diff.get(i);
+                } else {
+                    user_valid.set(i, -1);
+                }
+            }
+        }
+
+        for (int i = 0; i < user_valid.size(); ++i) {
+            Log.i("USER_VALID2", String.valueOf(user_valid.get(i)));
+        }
+
+    }
+
     // Press Start or Try Again
     public void playAndMatch(final View view) {
         //reaching the start game button to make hide it when the user starts the game
@@ -287,6 +332,7 @@ public class beginnerActivity extends AppCompatActivity {
 
                 //calculate and output the result
                 int game_result = compareArrays(reference_beat1, user_beat);
+                compareArrays2(user_beat, reference_beat1);
                 switch (game_result) {
                     case 2: //when result is 2
                         userButton.setVisibility(View.INVISIBLE);
