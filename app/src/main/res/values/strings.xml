@@ -1,15 +1,12 @@
 <resources>
     <string name="app_name">Rhythmer</string>
-    <string name="e_mail">E-mail</string>
-    <string name="sign_in">Sign in</string>
     <string name="password">Password</string>
     <string name="or">or</string>
-    <string name="Login">Login</string>
+    <string name="Login">Start</string>
     <string name="rhythmer">RhythMer</string>
-    <string name="log_in">Log In</string>
+    <string name="log_in">Start</string>
     <string name="email_or_username">Nickname or username</string>
     <string name="remember_me">Remember me</string>
-    <string name="sign_up">Sign up</string>
     <string name="todo1">TODO</string>
     <string name="welcome">Welcome,\nget ready to train your rhythm skills!\nHave fun!</string>
     <string name="please_select_your_mode">Please select your mode:</string>
@@ -66,7 +63,7 @@
     <string name="back_to_game2">Back to game</string>
     <string name="back_to_menu">Back to menu</string>
     <string name="next_level">Next Level</string>
-    <string name="goodJob">Good job!\nKeep on going with the next level!</string>
+    <string name="goodJob">Good job</string>
     <string name="goodJob2">Good job!\nKeep on going with the last level!</string>
     <string name="goodJobFinished">Good job!\nYou completed all the levels!\nYou can choose a level to repeat and play again!</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -77,6 +74,8 @@
     <string name="tooEarly">You pressed during the first fourth metronomes.</string>
     <string name="start_with_nthis_level">Start with \nthis level!</string>
     <string name="StartA">Continue with \nthis level!</string>
+    <string name="KeepOn">Keep on going with the next level!</string>
+        />
 
 </resources>
 

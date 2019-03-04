@@ -53,11 +53,11 @@ private static final String KEY_NAME="key_username";
        saveName();
 
 
-        if (empty) {
+        if (empty) {// if the name is empty is throws an error
             editText.setError("Please fill in your name!");
             editText.requestFocus();
 
-        } else {
+        } else {// otherwise it starts the activity
             startActivity(intent);
         }
     }
