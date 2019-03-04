@@ -58,7 +58,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:maxLines="4"
-        android:textColor="@color/colorAccent"
+        android:textColor="#353EB2"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
