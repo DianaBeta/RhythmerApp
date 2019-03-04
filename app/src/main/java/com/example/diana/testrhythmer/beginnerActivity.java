@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -230,7 +231,7 @@ public class beginnerActivity extends AppCompatActivity {
         return result;
     }
 
-    public static void compareArrays2(ArrayList<Long> user, ArrayList<Long> reference) {
+ /*   public static ArrayList<Integer> compareArrays2(ArrayList<Long> user, ArrayList<Long> reference) {
         ArrayList<Integer> user_valid = new ArrayList<>();
         ArrayList<Long> user_valid_diff = new ArrayList<>();
         for (int i = 0; i < user.size(); ++i) {
@@ -249,6 +250,7 @@ public class beginnerActivity extends AppCompatActivity {
 
         for (int i = 0; i < user_valid.size(); ++i) {
             Log.i("USER_VALID", String.valueOf(user_valid.get(i)));
+            Log.i("USER_VALIDDIST", String.valueOf(user_valid_diff.get(i)));
         }
 
         for (int j = 0; j < reference.size(); ++j) {
@@ -273,7 +275,9 @@ public class beginnerActivity extends AppCompatActivity {
             Log.i("USER_VALID2", String.valueOf(user_valid.get(i)));
         }
 
-    }
+        return user_valid;
+
+    }*/
 
     // Press Start or Try Again
     public void playAndMatch(final View view) {
@@ -292,10 +296,10 @@ public class beginnerActivity extends AppCompatActivity {
         userButton.setOnClickListener(new View.OnClickListener() {
            @Override
             public void onClick(View v) {
-                System.out.println("green button pressed.");
+                //System.out.println("green button pressed.");
                 final long click_time_ms = System.currentTimeMillis();
                 final long user_beat_ms = click_time_ms - start_time_ms;
-                System.out.println("user beat ms being added: " + user_beat_ms);
+                //System.out.println("user beat ms being added: " + user_beat_ms);
                 user_beat.add(user_beat_ms);
                 count = user_beat.size();
             }
@@ -332,7 +336,7 @@ public class beginnerActivity extends AppCompatActivity {
 
                 //calculate and output the result
                 int game_result = compareArrays(reference_beat1, user_beat);
-                compareArrays2(user_beat, reference_beat1);
+                //ArrayList<Integer> user_valid = compareArrays2(user_beat, reference_beat1);
                 switch (game_result) {
                     case 2: //when result is 2
                         userButton.setVisibility(View.INVISIBLE);
@@ -400,7 +404,7 @@ public class beginnerActivity extends AppCompatActivity {
                 ubutton_list.add((Button) findViewById(R.id.udot_5));
                 ubutton_list.add((Button) findViewById(R.id.udot_6));
 
-             /*   ArrayList<Button> ubuttonr_list = new ArrayList<>();
+                ArrayList<Button> ubuttonr_list = new ArrayList<>();
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_1));
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_2));
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_3));
@@ -411,7 +415,7 @@ public class beginnerActivity extends AppCompatActivity {
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_8));
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_9));
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_10));
-                */
+
 
                 // go through all userbuttons and set as many visible as contained userbeats
                 for (int j = 0; j < ubutton_list.size(); ++j) {
@@ -429,18 +433,27 @@ public class beginnerActivity extends AppCompatActivity {
                         //    k++;
                         //}
                         // ignore all dots before the 4x metronome (else) // except those inside the tolerance (if)
+
                         if (user_beat_diff < -250) {
                             ubutton_list.get(j).setVisibility(View.INVISIBLE);
                             TextView early = findViewById(R.id.early); // make note "you pressed before 4x metronome" visible
                             early.setVisibility(View.VISIBLE);
                         } else {
-                            ubutton_list.get(j).setX(point_x);//set button x position
-                            ubutton_list.get(j).setVisibility(View.VISIBLE);
+                            if (game_result == 1) {
+                                ubutton_list.get(j).setX(point_x);//set button x position
+                                ubutton_list.get(j).setVisibility(View.VISIBLE);
+                                ubuttonr_list.get(j).setVisibility(View.INVISIBLE);
+                            } else {
+                                ubuttonr_list.get(j).setX(point_x);//set button x position
+                                ubuttonr_list.get(j).setVisibility(View.VISIBLE);
+                                ubutton_list.get(j).setVisibility(View.INVISIBLE);
+                            }
                             //Log.i("user_beat", String.valueOf(user_beat.get(j)));
                         }
-                        System.out.println("Anzahl user Tips" + user_beat.size());
+                       // System.out.println("Anzahl user Tips" + user_beat.size());
                     }  else{
                         ubutton_list.get(j).setVisibility(View.INVISIBLE);
+                        ubuttonr_list.get(j).setVisibility(View.INVISIBLE);
                     }
                 }
                 user_beat.clear();

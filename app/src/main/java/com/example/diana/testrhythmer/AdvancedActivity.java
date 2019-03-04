@@ -351,7 +351,7 @@ public class AdvancedActivity extends AppCompatActivity {
                 ubutton_list.add((Button) findViewById(R.id.udot_5));
                 ubutton_list.add((Button) findViewById(R.id.udot_6));
 
-             /*   ArrayList<Button> ubuttonr_list = new ArrayList<>();
+                ArrayList<Button> ubuttonr_list = new ArrayList<>();
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_1));
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_2));
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_3));
@@ -362,7 +362,7 @@ public class AdvancedActivity extends AppCompatActivity {
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_8));
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_9));
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_10));
-                */
+
 
                 // go through all userbuttons and set as many visible as contained userbeats
                 for (int j = 0; j < ubutton_list.size(); ++j) {
@@ -385,13 +385,21 @@ public class AdvancedActivity extends AppCompatActivity {
                             TextView early = findViewById(R.id.early); // make note "you pressed before 4x metronome" visible
                             early.setVisibility(View.VISIBLE);
                         } else {
-                            ubutton_list.get(j).setX(point_x);//set button x position
-                            ubutton_list.get(j).setVisibility(View.VISIBLE);
-                           // Log.i("user_beat", String.valueOf(user_beat.get(j)));
+                            if (game_result == 1) {
+                                ubutton_list.get(j).setX(point_x);//set button x position
+                                ubutton_list.get(j).setVisibility(View.VISIBLE);
+                                ubuttonr_list.get(j).setVisibility(View.INVISIBLE);
+                            } else {
+                                ubuttonr_list.get(j).setX(point_x);//set button x position
+                                ubuttonr_list.get(j).setVisibility(View.VISIBLE);
+                                ubutton_list.get(j).setVisibility(View.INVISIBLE);
+                            }
+                            //Log.i("user_beat", String.valueOf(user_beat.get(j)));
                         }
-                        //System.out.println("Anzahl user Tips" + user_beat.size());
+                        // System.out.println("Anzahl user Tips" + user_beat.size());
                     }  else{
                         ubutton_list.get(j).setVisibility(View.INVISIBLE);
+                        ubuttonr_list.get(j).setVisibility(View.INVISIBLE);
                     }
                 }
                 user_beat.clear();

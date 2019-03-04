@@ -274,10 +274,10 @@ public class ExpertActivity extends AppCompatActivity {
         userButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("green button pressed.");
+                //System.out.println("green button pressed.");
                 final long click_time_ms = System.currentTimeMillis();
                 final long user_beat_ms = click_time_ms - start_time_ms;
-                System.out.println("user beat ms being added: " + user_beat_ms);
+                //System.out.println("user beat ms being added: " + user_beat_ms);
                 user_beat.add(user_beat_ms);
                 count = user_beat.size();
             }
@@ -386,7 +386,7 @@ public class ExpertActivity extends AppCompatActivity {
                 ubutton_list.add((Button) findViewById(R.id.udot_9));
                 ubutton_list.add((Button) findViewById(R.id.udot_10));
 
-             /*   ArrayList<Button> ubuttonr_list = new ArrayList<>();
+                ArrayList<Button> ubuttonr_list = new ArrayList<>();
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_1));
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_2));
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_3));
@@ -397,7 +397,7 @@ public class ExpertActivity extends AppCompatActivity {
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_8));
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_9));
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_10));
-                */
+
 
                 // go through all userbuttons and set as many visible as contained userbeats
                 for (int j = 0; j < ubutton_list.size(); ++j) {
@@ -420,13 +420,21 @@ public class ExpertActivity extends AppCompatActivity {
                             TextView early = findViewById(R.id.early); // make note "you pressed before 4x metronome" visible
                             early.setVisibility(View.VISIBLE);
                         } else {
-                            ubutton_list.get(j).setX(point_x);//set button x position
-                            ubutton_list.get(j).setVisibility(View.VISIBLE);
+                            if (game_result == 1) {
+                                ubutton_list.get(j).setX(point_x);//set button x position
+                                ubutton_list.get(j).setVisibility(View.VISIBLE);
+                                ubuttonr_list.get(j).setVisibility(View.INVISIBLE);
+                            } else {
+                                ubuttonr_list.get(j).setX(point_x);//set button x position
+                                ubuttonr_list.get(j).setVisibility(View.VISIBLE);
+                                ubutton_list.get(j).setVisibility(View.INVISIBLE);
+                            }
                             //Log.i("user_beat", String.valueOf(user_beat.get(j)));
                         }
-                        //System.out.println("Anzahl user Tips" + user_beat.size());
-                    } else {
+                        // System.out.println("Anzahl user Tips" + user_beat.size());
+                    }  else{
                         ubutton_list.get(j).setVisibility(View.INVISIBLE);
+                        ubuttonr_list.get(j).setVisibility(View.INVISIBLE);
                     }
                 }
                 user_beat.clear();
@@ -438,7 +446,7 @@ public class ExpertActivity extends AppCompatActivity {
         //start song (in here: reduced computation time) & save ms
         songs.get(0).start();
         start_time_ms = System.currentTimeMillis();
-        System.out.println("start time: " + start_time_ms);
+        //System.out.println("start time: " + start_time_ms);
     }
 
     public void NextSong(View view) {
