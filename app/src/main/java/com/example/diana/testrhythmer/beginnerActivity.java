@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class beginnerActivity extends AppCompatActivity {
+
+
     MediaPlayer mediaPlayer=new MediaPlayer();
     private static int result;
     private static int win_counter;
