@@ -385,6 +385,11 @@ public class ExpertActivity extends AppCompatActivity {
                 ubutton_list.add((Button) findViewById(R.id.udot_8));
                 ubutton_list.add((Button) findViewById(R.id.udot_9));
                 ubutton_list.add((Button) findViewById(R.id.udot_10));
+                ubutton_list.add((Button) findViewById(R.id.udot_11));
+                ubutton_list.add((Button) findViewById(R.id.udot_12));
+                ubutton_list.add((Button) findViewById(R.id.udot_13));
+                ubutton_list.add((Button) findViewById(R.id.udot_14));
+                ubutton_list.add((Button) findViewById(R.id.udot_15));
 
                 ArrayList<Button> ubuttonr_list = new ArrayList<>();
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_1));
@@ -397,7 +402,11 @@ public class ExpertActivity extends AppCompatActivity {
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_8));
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_9));
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_10));
-
+                ubuttonr_list.add((Button) findViewById(R.id.udotr_11));
+                ubuttonr_list.add((Button) findViewById(R.id.udotr_12));
+                ubuttonr_list.add((Button) findViewById(R.id.udotr_13));
+                ubuttonr_list.add((Button) findViewById(R.id.udotr_14));
+                ubuttonr_list.add((Button) findViewById(R.id.udotr_15));
 
                 // go through all userbuttons and set as many visible as contained userbeats
                 for (int j = 0; j < ubutton_list.size(); ++j) {

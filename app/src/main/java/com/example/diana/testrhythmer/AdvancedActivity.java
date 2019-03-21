@@ -350,6 +350,10 @@ public class AdvancedActivity extends AppCompatActivity {
                 ubutton_list.add((Button) findViewById(R.id.udot_4));
                 ubutton_list.add((Button) findViewById(R.id.udot_5));
                 ubutton_list.add((Button) findViewById(R.id.udot_6));
+                ubutton_list.add((Button) findViewById(R.id.udot_7));
+                ubutton_list.add((Button) findViewById(R.id.udot_8));
+                ubutton_list.add((Button) findViewById(R.id.udot_9));
+                ubutton_list.add((Button) findViewById(R.id.udot_10));
 
                 ArrayList<Button> ubuttonr_list = new ArrayList<>();
                 ubuttonr_list.add((Button) findViewById(R.id.udotr_1));
