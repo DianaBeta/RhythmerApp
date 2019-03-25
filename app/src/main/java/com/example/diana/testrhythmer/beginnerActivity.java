@@ -7,6 +7,7 @@ import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -282,6 +283,8 @@ public class beginnerActivity extends AppCompatActivity {
     }*/
 
     // Press Start or Try Again
+    //@SuppressLint("ClickableViewAccessibility")
+    @SuppressLint("ClickableViewAccessibility")
     public void playAndMatch(final View view) {
         //reaching the start game button to make hide it when the user starts the game
         Button start_button = findViewById(R.id.startGame);
@@ -292,21 +295,49 @@ public class beginnerActivity extends AppCompatActivity {
         early.setVisibility(View.INVISIBLE);
 
 
+
+
         //adding the green user_input button after song finishes
+
+
         Button userButton = findViewById(R.id.user_button);
         userButton.setVisibility(View.VISIBLE);
+
+        //Button userButton_testing = findViewById(R.id.user_button);
+        //userButton_testing.setVisibility(View.VISIBLE);
+
+        userButton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                int eventaction = event.getAction();
+                final long click_time_ms_ = System.currentTimeMillis();
+                if (eventaction == MotionEvent.ACTION_DOWN) {
+                    final long user_beat_ms_ = click_time_ms_ - start_time_ms;
+                    System.out.println("ONTOUCH: user beats: " + user_beat_ms_);
+                    user_beat.add(user_beat_ms_);
+                    count = user_beat.size();
+                }
+                return true;
+
+            }});
+
+            /*
+
         userButton.setOnClickListener(new View.OnClickListener() {
-           @Override
+            @Override
             public void onClick(View v) {
-                //System.out.println("green button pressed.");
+
+                System.out.println("coming in?.");
                 final long click_time_ms = System.currentTimeMillis();
                 final long user_beat_ms = click_time_ms - start_time_ms;
-                //System.out.println("user beat ms being added: " + user_beat_ms);
+                System.out.println("ONCLICK: user beats: " + user_beat_ms);
                 user_beat.add(user_beat_ms);
                 count = user_beat.size();
             }
         });
 
+        */
         //reaching the active imageButton (play)
         ImageButton imgButton = findViewById(R.id.imageButton);
 
