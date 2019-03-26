@@ -243,9 +243,6 @@ public class beginnerActivity extends AppCompatActivity {
         Button userButton = findViewById(R.id.user_button);
         userButton.setVisibility(View.VISIBLE);
 
-        //Button userButton_testing = findViewById(R.id.user_button);
-        //userButton_testing.setVisibility(View.VISIBLE);
-
         userButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

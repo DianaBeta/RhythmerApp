@@ -2,22 +2,19 @@ package com.example.diana.testrhythmer;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Canvas;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.LinearLayout.LayoutParams;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AdvancedActivity extends AppCompatActivity {
-    MediaPlayer mediaPlayer=new MediaPlayer();
+    MediaPlayer mediaPlayer = new MediaPlayer();
     private static int result;
     private static int win_counter;
     MediaPlayer advancedSong1;
@@ -39,17 +36,12 @@ public class AdvancedActivity extends AppCompatActivity {
         fillSongs();
     }
 
-    public void createMusic(){
+    public void createMusic() {
         advancedSong1 = MediaPlayer.create(AdvancedActivity.this, R.raw.advanced1);
         advancedSong2 = MediaPlayer.create(AdvancedActivity.this, R.raw.advanced2);
         advancedSong3 = MediaPlayer.create(AdvancedActivity.this, R.raw.advanced3);
     }
 
-   /* public void backtoAdvanced(View view) {
-        // Do something in response to button goes to beginner activity
-        Intent intent = new Intent(this, AdvancedActivity.class);
-        startActivity(intent);
-    }*/
 
     public void homeA(View view) {
         // Do something in response to button;goes to home which is where we can choose the levels and advanced and beginner are unlocked
@@ -64,14 +56,14 @@ public class AdvancedActivity extends AppCompatActivity {
     }
 
     // add songs to arrayList
-    public void fillSongs(){
+    public void fillSongs() {
         songs.add(advancedSong1);
         songs.add(advancedSong2);
         songs.add(advancedSong3);
     }
 
     // fill reference_beat for each song
-    public void fillReference1(){
+    public void fillReference1() {
         reference_beat1.clear();
         if (songs.size() == 3) {
             reference_beat1.add((long) 2711);
@@ -96,7 +88,7 @@ public class AdvancedActivity extends AppCompatActivity {
     }
 
     //make referenceBeats invisible & clear referencebeat list
-    public void dotsInvisible(){
+    public void dotsInvisible() {
         Button dot1 = findViewById(R.id.dot_1);
         dot1.setVisibility(View.INVISIBLE);
         Button dot2 = findViewById(R.id.dot_2);
@@ -113,7 +105,7 @@ public class AdvancedActivity extends AppCompatActivity {
     }
 
     //make userBeats invisible & clear userBeat list
-    public void udotsInvisible(){
+    public void udotsInvisible() {
         Button udot1 = findViewById(R.id.udot_1);
         udot1.setVisibility(View.INVISIBLE);
         Button udot2 = findViewById(R.id.udot_2);
@@ -152,14 +144,13 @@ public class AdvancedActivity extends AppCompatActivity {
 
         // Create ArrayList with invisible referenceDots
         ArrayList<Button> button_list = new ArrayList<Button>();
-        button_list.add((Button)findViewById(R.id.dot_1));
-        button_list.add((Button)findViewById(R.id.dot_2));
-        button_list.add((Button)findViewById(R.id.dot_3));
-        button_list.add((Button)findViewById(R.id.dot_4));
-        button_list.add((Button)findViewById(R.id.dot_5));
-        button_list.add((Button)findViewById(R.id.dot_6));
+        button_list.add((Button) findViewById(R.id.dot_1));
+        button_list.add((Button) findViewById(R.id.dot_2));
+        button_list.add((Button) findViewById(R.id.dot_3));
+        button_list.add((Button) findViewById(R.id.dot_4));
+        button_list.add((Button) findViewById(R.id.dot_5));
+        button_list.add((Button) findViewById(R.id.dot_6));
 
-        //System.out.println("Number of songs:" + songs.size());
         //Go through invisible referenceDots and set as many visible as contained references in songs (according to computation)
         for (int i = 0; i < button_list.size(); ++i) {
             if (i < reference_beat1.size()) {
@@ -209,9 +200,7 @@ public class AdvancedActivity extends AppCompatActivity {
         win_counter = 0; //counter of the correct clicked beats
         int win_treshold = array1.size(); // after how many correct clicks does the user win?
         int tolerance_rate_ms = 250; //increase if you want more WINs, decrease if you want game to be more strict
-       // System.out.println(array1.size()+"--"+array2.size());
-        if (array1.size() != array2.size()){ //if the input arrays aren't same size
-       //     System.out.print("in here!");
+        if (array1.size() != array2.size()) { //if the input arrays aren't same size
             result = 2;
         } else {
             for (int i = 0; i < array2.size(); i++) {
@@ -228,6 +217,8 @@ public class AdvancedActivity extends AppCompatActivity {
     }
 
     // Press Start or Try Again
+    @SuppressLint("ClickableViewAccessibility")
+
     public void playAndMatch(final View view) {
         //reaching the start game button to make hide it when the user starts the game
         Button start_button = findViewById(R.id.startGame);
@@ -240,17 +231,24 @@ public class AdvancedActivity extends AppCompatActivity {
         //adding the green user_input button after song finishes
         Button userButton = findViewById(R.id.user_button);
         userButton.setVisibility(View.VISIBLE);
-        userButton.setOnClickListener(new View.OnClickListener() {
+
+        userButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-              //  System.out.println("green button pressed.");
-                final long click_time_ms = System.currentTimeMillis();
-                final long user_beat_ms = click_time_ms - start_time_ms;
-                //System.out.println("user beat ms being added: " + user_beat_ms);
-                user_beat.add(user_beat_ms);
-                count = user_beat.size();
+            public boolean onTouch(View v, MotionEvent event) {
+
+                int eventaction = event.getAction();
+                final long click_time_ms_ = System.currentTimeMillis();
+                if (eventaction == MotionEvent.ACTION_DOWN) {
+                    final long user_beat_ms_ = click_time_ms_ - start_time_ms;
+                    System.out.println("ONTOUCH: user beats: " + user_beat_ms_);
+                    user_beat.add(user_beat_ms_);
+                    count = user_beat.size();
+                }
+                return true;
+
             }
         });
+
 
         //reaching the active imageButton (play)
         ImageButton imgButton = findViewById(R.id.imageButton);
@@ -293,11 +291,7 @@ public class AdvancedActivity extends AppCompatActivity {
                         //Button start_button = findViewById(R.id.startGame);
                         start_button.setText(getString(R.string.RESTART));
                         start_button.setVisibility(View.VISIBLE);
-                        // Just control output
-                        /*System.out.println("YOU LOST :( ");
-                        System.out.println("You should press green the button exactly " + reference_beat1.size() + " times.");
-                        System.out.println("You pressed " + user_beat.size() + " times.");
-                        System.out.println("TRY AGAIN NOW!");*/
+
                         break;
                     case 1://when result is 1
                         userButton.setVisibility(View.INVISIBLE);
@@ -307,11 +301,6 @@ public class AdvancedActivity extends AppCompatActivity {
                         result_display.setVisibility(View.VISIBLE);
                         result_display.setText("YOU WON! :) " + user_beat.size() + "/" + reference_beat1.size());
 
-                        // Just control output
-                        /* System.out.println("YOU WON! :)");
-                        System.out.println(reference_beat.size() + " out of " + reference_beat.size() + " beats were there correctly!");
-                        System.out.println("NEXT LEVEL UNLOCKED. CLICK TO GO!");
-                        //suggestion for the next level will be added as a feature here later on*/
 
                         // Make NextSong visible
                         Button NextSong = findViewById(R.id.NextSong);
@@ -326,12 +315,9 @@ public class AdvancedActivity extends AppCompatActivity {
                         start_button.setText(getString(R.string.RESTART));
                         start_button.setVisibility(View.VISIBLE);
 
-                        // Just control output
-                        /* System.out.println("YOU LOST :( ");
-                        System.out.println("Only " + win_counter + " out of " + reference_beat.size() + " beats were right!");
-                        System.out.println("TRY AGAIN NOW!"); //this will be implemented as a feature later on*/
+
                     default:
-                       // System.out.println(result);
+                        // System.out.println(result);
                 }
 
                 //define length for calculation
@@ -373,16 +359,9 @@ public class AdvancedActivity extends AppCompatActivity {
                     if (j < user_beat.size()) {
                         double user_beat_diff = user_beat.get(j) - reference_beat1.get(0);
                         double point_x_percent = user_beat_diff / (double) (reference_beat_end - reference_beat1.get(0)); //Ensures the same scala as at reference beat
-                       // Log.i("point_x_percent=", String.valueOf(point_x_percent));
+                        // Log.i("point_x_percent=", String.valueOf(point_x_percent));
                         int point_x = (int) (point_x_percent * (double) line_width + (double) line_start);
-                        //Log.i("pointx", String.valueOf(point_x));
-                        // if(user_beat.get(j)!= reference_beat1.get(j)){
-                        //Button ubbutton_list.get(j)= findViewById(R.id.udotr_10);
-                        //   ubutton_list.get(j).setButton(R.drawable.reddot);
-                        // } else {
-                        //     ubutton_list.set(j, ubuttonr_list.get(k));
-                        //    k++;
-                        //}
+
                         // ignore all dots before the 4x metronome (else) // except those inside the tolerance (if)
                         if (user_beat_diff < -250) {
                             ubutton_list.get(j).setVisibility(View.INVISIBLE);
@@ -398,17 +377,14 @@ public class AdvancedActivity extends AppCompatActivity {
                                 ubuttonr_list.get(j).setVisibility(View.VISIBLE);
                                 ubutton_list.get(j).setVisibility(View.INVISIBLE);
                             }
-                            //Log.i("user_beat", String.valueOf(user_beat.get(j)));
                         }
-                        // System.out.println("Anzahl user Tips" + user_beat.size());
-                    }  else{
+                    } else {
                         ubutton_list.get(j).setVisibility(View.INVISIBLE);
                         ubuttonr_list.get(j).setVisibility(View.INVISIBLE);
                     }
                 }
                 user_beat.clear();
                 ubutton_list.clear();
-                //   ubuttonr_list.clear();
             }
         });
 
@@ -435,7 +411,7 @@ public class AdvancedActivity extends AppCompatActivity {
             NextSong.setVisibility(View.INVISIBLE);
             final TextView result_display = findViewById(R.id.result_view);
             result_display.setVisibility(View.INVISIBLE);
-        } else  {
+        } else {
             Button NextSong = findViewById(R.id.NextSong);
             NextSong.setVisibility(View.GONE);
             NextActivity();
@@ -450,11 +426,12 @@ public class AdvancedActivity extends AppCompatActivity {
         imgButton.setImageResource(R.drawable.ic_media_play);
     }
 
-    public void NextActivity(){
+    public void NextActivity() {
         //goes to next activity which is congratulations activity to continue with the next level, expert in this case
-        Intent intent = new Intent(this,Congrats2.class);
+        Intent intent = new Intent(this, Congrats2.class);
         startActivity(intent);
     }
+
     protected void onPause() {
         // pause the song when closing app
         super.onPause();
