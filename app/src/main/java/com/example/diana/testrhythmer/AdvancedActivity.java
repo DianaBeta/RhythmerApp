@@ -25,7 +25,6 @@ public class AdvancedActivity extends AppCompatActivity {
     ArrayList<Long> userBeat = new ArrayList<>();
     ArrayList<MediaPlayer> songs = new ArrayList<>();
     int count;
-    // int k = 0;
     long start_time_ms;
 
     @Override

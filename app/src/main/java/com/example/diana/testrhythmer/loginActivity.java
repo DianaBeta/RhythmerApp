@@ -13,7 +13,7 @@ public class loginActivity extends AppCompatActivity {
     private static final String KEY_NAME="key_username";
 
     public void onAdvanced(View view) {
-        ////display a message that clarifies you can not start Advanced level without doing Beginner
+        //display a message that clarifies you can not start Advanced level without doing Beginner
         textView= findViewById(R.id.startB);
         textView.setVisibility(View.VISIBLE);
     }

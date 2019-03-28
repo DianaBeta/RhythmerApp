@@ -294,7 +294,7 @@ public class ExpertActivity extends AppCompatActivity {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
 
-                // make green userButton invisible// make StartButton to Restart and visible // play to replay
+                // make green userButton invisible; make StartButton to Restart and visible; play to replay
                 Button userButton = findViewById(R.id.user_button);
                 userButton.setVisibility(View.INVISIBLE);
                 Button start_button = findViewById(R.id.startGame);
@@ -427,7 +427,7 @@ public class ExpertActivity extends AppCompatActivity {
 
     public void NextSong(View view) {
         // Logic following
-        // Delete first song in the array until no song is left // set NexSong and result invisible
+        // Delete first song in the array until no song is left; set NexSong and result invisible
         if (songs.size() == 3) {
             songs.get(0).release();
             songs.remove(0);
